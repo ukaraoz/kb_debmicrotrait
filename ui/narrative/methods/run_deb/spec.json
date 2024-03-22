@@ -1,0 +1,261 @@
+{
+    "ver": "0.0.1",
+    "authors": [
+        "giannamars"
+    ],
+    "contact": "",
+    "categories": ["active"],
+    "widgets": {
+        "input": null,
+        "output": null
+    },
+    "parameter-groups": [
+        {
+            "id": "acquisition_traits",
+            "parameters": [
+               "granularity_acquisition"
+            ],
+            "optional": false,
+            "advanced": true,
+            "allow_multiple": false,
+            "with_border": true
+        },
+        {
+            "id": "resource_use_traits",
+            "parameters": [
+               "granularity_use"
+            ],
+            "optional": false,
+            "advanced": true,
+            "allow_multiple": false,
+            "with_border": true
+        },
+        {
+            "id": "stress_tolerance_traits",
+            "parameters": [
+               "granularity_stress"
+            ],
+            "optional": false,
+            "advanced": true,
+            "allow_multiple": false,
+            "with_border": true
+        }
+
+    ],
+    "parameters": [
+        {
+            "id": "granularity_acquisition",
+            "optional": false,
+            "advanced": false,
+            "allow_multiple": false,
+            "default_values": [
+                "1"
+            ],
+            "field_type": "dropdown",
+            "dropdown_options": {
+                "options": [
+                    {
+                        "value": "1",
+                        "display": "1",
+                        "id": "one",
+                        "ui-name": "1 - default (lowest) granularity"
+                    },
+                    {
+                        "value": "2",
+                        "display": "2",
+                        "id": "two",
+                        "ui-name": "2 - medium granularity"
+                    }
+                    ,
+                    {
+                        "value": "3",
+                        "display": "3",
+                        "id": "3",
+                        "ui-name": "3 - highest granularity"
+                    }
+                ]
+            }
+        },
+        {
+            "id": "granularity_use",
+            "optional": false,
+            "advanced": false,
+            "allow_multiple": false,
+            "default_values": [
+                "1"
+            ],
+            "field_type": "dropdown",
+            "dropdown_options": {
+                "options": [
+                    {
+                        "value": "1",
+                        "display": "1",
+                        "id": "one",
+                        "ui-name": "1 - default (lowest) granularity"
+                    },
+                    {
+                        "value": "2",
+                        "display": "2",
+                        "id": "two",
+                        "ui-name": "2 - medium granularity"
+                    }
+                    ,
+                    {
+                        "value": "3",
+                        "display": "3",
+                        "id": "3",
+                        "ui-name": "3 - highest granularity"
+                    }
+                ]
+            }
+        },
+        {
+            "id": "granularity_stress",
+            "optional": false,
+            "advanced": false,
+            "allow_multiple": false,
+            "default_values": [
+                "1"
+            ],
+            "field_type": "dropdown",
+            "dropdown_options": {
+                "options": [
+                    {
+                        "value": "1",
+                        "display": "1",
+                        "id": "one",
+                        "ui-name": "1 - default (lowest) granularity"
+                    },
+                    {
+                        "value": "2",
+                        "display": "2",
+                        "id": "two",
+                        "ui-name": "2 - medium granularity"
+                    }
+                    ,
+                    {
+                        "value": "3",
+                        "display": "3",
+                        "id": "3",
+                        "ui-name": "3 - highest granularity"
+                    }
+                ]
+            }
+        },
+        {
+            "id": "media_refs",
+            "optional": true,
+            "advanced": false,
+            "allow_multiple": true,
+            "default_values": [
+                ""
+            ],
+            "field_type": "text",
+            "text_options": {
+                "valid_ws_types": [
+                    "KBaseBiochem.Media",
+                    "KBaseMatrices.ChemicalAbundanceMatrix"
+                ]
+            }
+        },
+        {
+            "id": "simulation_type",
+            "optional": false,
+            "advanced": false,
+            "allow_multiple": false,
+            "default_values": [
+                "batch"
+            ],
+            "field_type": "dropdown",
+            "dropdown_options": {
+                "options": [
+                    {
+                        "value": "batch",
+                        "display": "Batch Mode",
+                        "id": "batch",
+                        "ui-name": "batch - default simulation type"
+                    },
+                    {
+                        "value": "mixed_media",
+                        "display": "Mixed Mode",
+                        "id": "mixed_media",
+                        "ui-name": "mixed_media - mixed media"
+                    }
+                    ,
+                    {
+                        "value": "competition",
+                        "display": "Competition",
+                        "id": "competition",
+                        "ui-name": "competition - competition"
+                    },
+                    {
+                        "value": "fba_media",
+                        "display": "KBase Media",
+                        "id": "fba_media",
+                        "ui-name": "fba_media - fba_media"
+                    }
+                ]
+            }
+        },
+        {
+            "id": "media_concentration",
+            "optional": false,
+            "advanced": false,
+            "allow_multiple": true,
+            "default_values": [ "1.25" ],
+            "field_type": "text"
+        },
+        {
+            "id": "output_name",
+            "optional": false,
+            "advanced": false,
+            "allow_multiple": false,
+            "default_values": [ "DEBmicroTrait" ],
+            "field_type": "text",
+            "text_options": {
+                "is_output_name": true
+            }
+        } 
+
+    ],
+    "behavior": {
+        "service-mapping": {
+            "url": "",
+            "name": "debmicrotrait",
+            "method": "run_deb",
+            "input_mapping": [
+                {
+                    "narrative_system_variable": "workspace",
+                    "target_property": "workspace_name"
+                },{
+                    "narrative_system_variable": "workspace_id",
+                    "target_property": "workspace_id"
+                },
+                {
+                    "input_parameter": "media_refs",
+                    "target_property": "media_refs",
+                    "target_type_transform": "list<ref>"
+                },{
+                    "input_parameter": "simulation_type",
+                    "target_property": "simulation_type"
+                },{
+                    "input_parameter": "media_concentration",
+                    "target_property": "media_concentration"
+                },{
+                    "input_parameter": "output_name",
+                    "target_property": "output_name"
+                }
+            ],
+            "output_mapping": [
+                {
+                    "service_method_output_path": [0,"report_name"],
+                    "target_property": "report_name"
+                },{
+                    "service_method_output_path": [0,"report_ref"],
+                    "target_property": "report_ref"
+                }
+            ]
+        }
+    },
+    "job_id_output_field": "docker"
+}

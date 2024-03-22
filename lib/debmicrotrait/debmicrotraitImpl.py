@@ -41,7 +41,7 @@ class debmicrotrait:
     ######################################### noqa
     VERSION = "0.0.1"
     GIT_URL = "https://github.com/ukaraoz/kb_debmicrotrait"
-    GIT_COMMIT_HASH = "cbacc87d4ce4dde70c07c0ab871485bfccf72607"
+    GIT_COMMIT_HASH = "60190929f762c704f502ac389e908cab593cd0f0"
 
     #BEGIN_CLASS_HEADER
     #END_CLASS_HEADER
@@ -345,6 +345,116 @@ class debmicrotrait:
         # At some point might do deeper type checking...
         if not isinstance(output, dict):
             raise ValueError('Method run_debmicrotrait return value ' +
+                             'output is not type dict as required.')
+        # return the results
+        return [output]
+
+    def run_deb(self, ctx, params):
+        """
+        :param params: instance of mapping from String to unspecified object
+        :returns: instance of type "ReportResults" -> structure: parameter
+           "report_name" of String, parameter "report_ref" of String
+        """
+        # ctx is the context object
+        # return variables are: output
+        #BEGIN run_deb
+        console = []
+        invalid_msgs = []
+        objects_created = []
+        file_links = []
+        self.log(console, 'Running giannamarsDebmicroTrait()')
+        report = ''
+        timestamp = int((datetime.utcnow() - datetime.utcfromtimestamp(0)).total_seconds() * 1000)
+        output_dir = os.path.join(self.scratch, 'output_' + str(timestamp))
+        if not os.path.exists(output_dir):
+            os.makedirs(output_dir)
+
+        SERVICE_VER = 'dev'  # DEBUG
+        token = ctx['token']
+        try:
+            wsClient = workspaceService(self.workspaceURL, token=token)
+        except Exception as e:
+            raise ValueError("unable to instantiate wsClient. "+str(e))
+        try:
+            dfuClient = DFUClient(self.callbackURL, token=token, service_ver=SERVICE_VER)
+        except Exception as e:
+            raise ValueError("unable to instantiate dfuClient. "+str(e))
+        
+
+        html_output_dir = os.path.join(output_dir, 'output_html.' + str(timestamp))
+        if not os.path.exists(html_output_dir):
+            os.makedirs(html_output_dir)
+        
+        # Load precomputed data
+        substrate_thermodynamics_data = os.path.join('/kb/module/data', 'substrate_thermodynamic_traits.csv')
+        substrate_thermodynamics = h.plot_substrate_thermodynamic_traits(params, substrate_thermodynamics_data, html_output_dir)
+         # Load precomputed data
+        substrate_kinetics_data = os.path.join('/kb/module/data', 'substrate_kinetic_traits.csv')
+        substrate_kinetics = h.plot_substrate_kinetic_traits(params, substrate_kinetics_data, html_output_dir)
+       
+        # Generate dummy table data 
+        data_array = np.random.rand(3, 39)
+        headers = ['Header ' + str(i) for i in range(1, 40)]  # Sample headers
+
+        api_results = {
+            "png": [substrate_thermodynamics['name'], substrate_kinetics['name']],
+            "header": headers,
+            "data": data_array
+        }
+
+
+        html_report = h.html_add_batch_summary(params, api_results, html_output_dir)
+
+        try:
+            html_upload_ret = dfuClient.file_to_shock({'file_path': html_report['path'],
+                                                'make_handle': 0,
+                                                'pack': 'zip'})
+        except:
+            raise ValueError('error uploading html file to shock')
+        
+        try:
+            png_upload_ret = dfuClient.file_to_shock({'file_path': substrate_thermodynamics['path'],
+                                                'make_handle': 0})
+        except:
+            raise ValueError('error uploading png file to shock')
+
+    
+        reportName = 'view_tree_report_' + str(uuid.uuid4())
+
+        reportObj = {'objects_created': [],
+                     'direct_html_link_index': 0,
+                     'file_links': [],
+                     'html_links': [],
+                     'workspace_name': params['workspace_name'],
+                     'report_object_name': reportName
+                     }
+        
+        reportObj['html_links'] = [{'shock_id': html_upload_ret['shock_id'],
+                                    'name': html_report['name'],
+                                    'label': 'test' + ' HTML'
+                                    }
+                                   ]
+        
+        reportObj['file_links'] = [{'shock_id': png_upload_ret['shock_id'],
+                                    'name': 'pan_circle_plot.png',
+                                    'label': 'test plot'
+                                    }
+                                   ]
+        
+        reportClient = KBaseReport(self.callbackURL, token=ctx['token'], service_ver=SERVICE_VER)
+        report_info = reportClient.create_extended_report(reportObj)
+
+        self.log(console, "BUILDING RETURN OBJECT")
+        output = {'report_name': report_info['name'],
+                  'report_ref': report_info['ref']
+                  }
+
+        self.log(console, "giannamarsDebmicroTrait() DONE")
+        #END run_deb
+
+        # At some point might do deeper type checking...
+        if not isinstance(output, dict):
+            raise ValueError('Method run_deb return value ' +
                              'output is not type dict as required.')
         # return the results
         return [output]

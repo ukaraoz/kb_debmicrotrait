@@ -41,7 +41,7 @@ class debmicrotrait:
     ######################################### noqa
     VERSION = "0.0.1"
     GIT_URL = "https://github.com/ukaraoz/kb_debmicrotrait"
-    GIT_COMMIT_HASH = "cc69f30b21bb6618b2d3d60dee8a67f4dcc8f452"
+    GIT_COMMIT_HASH = "60190929f762c704f502ac389e908cab593cd0f0"
 
     #BEGIN_CLASS_HEADER
     #END_CLASS_HEADER
@@ -87,7 +87,6 @@ class debmicrotrait:
         # 'workspace_name': 'test_ContigFilter_1710549679759'
         # 'workspace_id'
 
-        print("---FIRST---", "\n")
         logging.info(params)
         params = Params(params)
         #pprint.pprint(params)
@@ -173,7 +172,6 @@ class debmicrotrait:
         pooled_fasta_pathsfile = os.path.join(pooled_fasta_dir, "pooled_fasta_pathsfile.txt")
         with open(pooled_fasta_pathsfile, mode='wt', encoding='utf-8') as pathsfile:
             pathsfile.write('\n'.join(pooled_fasta_fp_l))
-        print("pooled_fasta_pathsfile:", pooled_fasta_pathsfile, "\n")
 
         #pp.pprint(dir(obj))
         #pp.pprint(obj.ref)
@@ -187,16 +185,19 @@ class debmicrotrait:
 
         test_figure_files = os.listdir(test_figures_dir)
         test_figure_files_fp = [os.path.join(test_figures_dir, fn) for fn in os.listdir(test_figures_dir)]
-        for fp in test_figure_files_fp:
-            print(fp, end = '\n')
-        print("----------\n")
+        #for fp in test_figure_files_fp:
+        #    print(fp, end = '\n')
+        #print("----------\n")
         test_datatables_files = os.listdir(test_datatables_dir)
         test_datatables_files_fp = [os.path.join(test_datatables_dir, fn) for fn in os.listdir(test_datatables_dir)]
-        for fp in test_datatables_files_fp:
-            print(fp, end = '\n')
-        print("\n\n")
-        print("---END---", "\n")
-       
+        #for fp in test_datatables_files_fp:
+        #    print(fp, end = '\n')
+        #print("\n\n")
+        print("microtrait_dir:", microtrait_dir, "\n\n\n\n")
+        microtrait_dir_files_fp = [os.path.join(microtrait_dir, 'datatables', fn) for fn in os.listdir(os.path.join(microtrait_dir, 'datatables'))]
+        for fp in microtrait_dir_files_fp:
+            print("$", fp, "$", end = '\n')
+        
         
         ##type_ = app.ws.get_object_info3({
         ##    'objects': [{'ref': ref}]
@@ -231,11 +232,10 @@ class debmicrotrait:
         ### html
         ####
         #####
-        print("APPAPPAPP: ", "\n")
-        pprint.pprint(app)
+        #pprint.pprint(app)
         hb = report.HTMLBuilder(microtrait_dir, report_dir)
         report_fp = hb.write()
-        print("report_fp: ", report_fp, "\n")
+        #print("report_fp: ", report_fp, "\n")
 
         # file_links/html_links
         ## 1. shock_id: (required string) Shock ID for a file. Not required if path is present.
@@ -243,10 +243,56 @@ class debmicrotrait:
         ## 3. name: (required string) name of the file
         ## 4. description: (optional string) Readable description of the file
         ## 5. template: (optional dictionary) A dictionary with keys template_file (required) and template_data_json (optional), specifying a template and accompanying data to be rendered to generate an output file.
-        output_files = get_microtrait_datatables(os.path.join(microtrait_dir, 'datatables'))
-        file_links = [value for key, value in output_files.items()
-                        if value['path'] is not None]
+        #output_files = get_microtrait_datatables(os.path.join(microtrait_dir, 'datatables'))
+        #file_links = [value for key, value in output_files.items() 
+        #    if value['path'] is not None]
+        #pprint.pprint(file_links)
 
+        file_links = [
+        {
+            'path': os.path.join(microtrait_dir, 'datatables', 'trait_matrixatgranularity3.txt'),
+            'name': 'Microtrait trait matrix at granularity level 3 in tabular format',
+            'label': 'trait_matrixatgranularity3.txt',
+            'description': 'Microtrait trait matrix at granularity level 3 in tabular format'
+        },
+        {
+            'path': os.path.join(microtrait_dir, 'datatables', 'guild2traitprofile.txt'),
+            'name': 'Guild to trait profile in tabular format',
+            'label': 'guild2traitprofile.txt',
+            'description': 'Guild to trait profile in tabular format'
+        },
+        {
+            'path': os.path.join(microtrait_dir, 'datatables', 'trait_matrixatgranularity2.txt'),
+            'name': 'Microtrait trait matrix at granularity level 2 in tabular format',
+            'label': 'trait_matrixatgranularity2.txt',
+            'description': 'Microtrait trait matrix at granularity level 2 in tabular format'
+        },
+        {
+            'path': os.path.join(microtrait_dir, 'datatables', 'trait_matrixatgranularity1.txt'),
+            'name': 'Microtrait trait matrix at granularity level 1 in tabular format',
+            'label': 'trait_matrixatgranularity1.txt',
+            'description': 'Microtrait trait matrix at granularity level 1 in tabular format'
+        },
+        {
+            'path': os.path.join(microtrait_dir, 'datatables', 'rule_matrix.txt'),
+            'name': 'Microtrait rules output in tabular format',
+            'label': 'rule_matrix.txt',
+            'description': 'Microtrait rules output in tabular format'
+        },
+        {
+            'path': os.path.join(microtrait_dir, 'datatables', 'hmm_matrix.txt'),
+            'name': 'Microtrait hmm output in tabular format',
+            'label': 'hmm_matrix.txt',
+            'description': 'Microtrait hmm output in tabular format'
+        },
+        {
+            'path': os.path.join(microtrait_dir, 'datatables', 'genome2guild.txt'),
+            'name': 'Genome to guild table',
+            'label': 'genome2guild.txt',
+            'description': 'Genome to guild table'
+        }]
+
+        print("AAAAA-", os.path.basename(report_fp), "\n")
         html_links = [{
             'path': report_dir,
             'name': os.path.basename(report_fp),
@@ -262,7 +308,7 @@ class debmicrotrait:
             'message': report_text,
             #  direct_html_link_index: 
             ##  (optional integer) index in html_links that you want to use as the main/default report view
-            #'direct_html_link_index': 0,
+            'direct_html_link_index': 0,
             #  html_links: 
             ##  (optional list of dicts) HTML files to attach and display in the report (see the additional information below)
             'html_links': html_links,        
@@ -302,6 +348,111 @@ class debmicrotrait:
                              'output is not type dict as required.')
         # return the results
         return [output]
+    
+    def run_giannamarsDebmicroTrait(self, ctx, params):
+        """
+        This example function accepts any number of parameters and returns results in a KBaseReport
+        :param params: instance of mapping from String to unspecified object
+        :returns: instance of type "ReportResults" -> structure: parameter
+           "report_name" of String, parameter "report_ref" of String
+        """
+        # ctx is the context object
+        # return variables are: output
+        #BEGIN run_giannamarsDebmicroTrait
+       
+        console = []
+        invalid_msgs = []
+        objects_created = []
+        file_links = []
+        self.log(console, 'Running giannamarsDebmicroTrait()')
+        report = ''
+        timestamp = int((datetime.utcnow() - datetime.utcfromtimestamp(0)).total_seconds() * 1000)
+        output_dir = os.path.join(self.scratch, 'output_' + str(timestamp))
+        if not os.path.exists(output_dir):
+            os.makedirs(output_dir)
+
+        SERVICE_VER = 'dev'  # DEBUG
+        token = ctx['token']
+        try:
+            wsClient = workspaceService(self.workspaceURL, token=token)
+        except Exception as e:
+            raise ValueError("unable to instantiate wsClient. "+str(e))
+        try:
+            dfuClient = DFUClient(self.callbackURL, token=token, service_ver=SERVICE_VER)
+        except Exception as e:
+            raise ValueError("unable to instantiate dfuClient. "+str(e))
+        
+
+        html_output_dir = os.path.join(output_dir, 'output_html.' + str(timestamp))
+        if not os.path.exists(html_output_dir):
+            os.makedirs(html_output_dir)
+        
+        # Load precomputed data
+        substrate_thermodynamics_data = os.path.join('/kb/module/data', 'substrate_thermodynamic_traits.csv')
+        substrate_thermodynamics = h.plot_substrate_thermodynamic_traits(params, substrate_thermodynamics_data, html_output_dir)
+         # Load precomputed data
+        substrate_kinetics_data = os.path.join('/kb/module/data', 'substrate_kinetic_traits.csv')
+        substrate_kinetics = h.plot_substrate_kinetic_traits(params, substrate_kinetics_data, html_output_dir)
+       
+        # Generate dummy table data 
+        data_array = np.random.rand(3, 39)
+        headers = ['Header ' + str(i) for i in range(1, 40)]  # Sample headers
+
+        api_results = {
+            "png": [substrate_thermodynamics['name'], substrate_kinetics['name']],
+            "header": headers,
+            "data": data_array
+        }
+
+
+        html_report = h.html_add_batch_summary(params, api_results, html_output_dir)
+
+        try:
+            html_upload_ret = dfuClient.file_to_shock({'file_path': html_report['path'],
+                                                'make_handle': 0,
+                                                'pack': 'zip'})
+        except:
+            raise ValueError('error uploading html file to shock')
+        
+        try:
+            png_upload_ret = dfuClient.file_to_shock({'file_path': substrate_thermodynamics['path'],
+                                                'make_handle': 0})
+        except:
+            raise ValueError('error uploading png file to shock')
+
+    
+        reportName = 'view_tree_report_' + str(uuid.uuid4())
+
+        reportObj = {'objects_created': [],
+                     'direct_html_link_index': 0,
+                     'file_links': [],
+                     'html_links': [],
+                     'workspace_name': params['workspace_name'],
+                     'report_object_name': reportName
+                     }
+        
+        reportObj['html_links'] = [{'shock_id': html_upload_ret['shock_id'],
+                                    'name': html_report['name'],
+                                    'label': 'test' + ' HTML'
+                                    }
+                                   ]
+        
+        reportObj['file_links'] = [{'shock_id': png_upload_ret['shock_id'],
+                                    'name': 'pan_circle_plot.png',
+                                    'label': 'test plot'
+                                    }
+                                   ]
+        
+        reportClient = KBaseReport(self.callbackURL, token=ctx['token'], service_ver=SERVICE_VER)
+        report_info = reportClient.create_extended_report(reportObj)
+
+        self.log(console, "BUILDING RETURN OBJECT")
+        output = {'report_name': report_info['name'],
+                  'report_ref': report_info['ref']
+                  }
+
+        self.log(console, "giannamarsDebmicroTrait() DONE")
+
     def status(self, ctx):
         #BEGIN_STATUS
         returnVal = {'state': "OK",

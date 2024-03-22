@@ -41,7 +41,7 @@ class debmicrotrait:
     ######################################### noqa
     VERSION = "0.0.1"
     GIT_URL = "https://github.com/ukaraoz/kb_debmicrotrait"
-    GIT_COMMIT_HASH = "883e9bde9166708433006d1a85ce4bd590829d76"
+    GIT_COMMIT_HASH = "60190929f762c704f502ac389e908cab593cd0f0"
 
     #BEGIN_CLASS_HEADER
     #END_CLASS_HEADER
@@ -251,41 +251,48 @@ class debmicrotrait:
         file_links = [
         {
             'path': os.path.join(microtrait_dir, 'datatables', 'trait_matrixatgranularity3.txt'),
-            'name': 'trait_matrixatgranularity3.txt',
+            'name': 'Microtrait trait matrix at granularity level 3 in tabular format',
             'label': 'trait_matrixatgranularity3.txt',
             'description': 'Microtrait trait matrix at granularity level 3 in tabular format'
         },
         {
             'path': os.path.join(microtrait_dir, 'datatables', 'guild2traitprofile.txt'),
-            'name': 'guild2traitprofile.txt',
+            'name': 'Guild to trait profile in tabular format',
             'label': 'guild2traitprofile.txt',
             'description': 'Guild to trait profile in tabular format'
         },
         {
             'path': os.path.join(microtrait_dir, 'datatables', 'trait_matrixatgranularity2.txt'),
-            'name': 'trait_matrixatgranularity2.txt',
+            'name': 'Microtrait trait matrix at granularity level 2 in tabular format',
             'label': 'trait_matrixatgranularity2.txt',
             'description': 'Microtrait trait matrix at granularity level 2 in tabular format'
         },
         {
             'path': os.path.join(microtrait_dir, 'datatables', 'trait_matrixatgranularity1.txt'),
-            'name': 'trait_matrixatgranularity1.txt',
+            'name': 'Microtrait trait matrix at granularity level 1 in tabular format',
             'label': 'trait_matrixatgranularity1.txt',
             'description': 'Microtrait trait matrix at granularity level 1 in tabular format'
         },
         {
             'path': os.path.join(microtrait_dir, 'datatables', 'rule_matrix.txt'),
-            'name': 'rule_matrix.txt',
+            'name': 'Microtrait rules output in tabular format',
             'label': 'rule_matrix.txt',
             'description': 'Microtrait rules output in tabular format'
         },
         {
             'path': os.path.join(microtrait_dir, 'datatables', 'hmm_matrix.txt'),
-            'name': 'hmm_matrix.txt',
+            'name': 'Microtrait hmm output in tabular format',
             'label': 'hmm_matrix.txt',
             'description': 'Microtrait hmm output in tabular format'
+        },
+        {
+            'path': os.path.join(microtrait_dir, 'datatables', 'genome2guild.txt'),
+            'name': 'Genome to guild table',
+            'label': 'genome2guild.txt',
+            'description': 'Genome to guild table'
         }]
 
+        print("AAAAA-", os.path.basename(report_fp), "\n")
         html_links = [{
             'path': report_dir,
             'name': os.path.basename(report_fp),
@@ -301,10 +308,10 @@ class debmicrotrait:
             'message': report_text,
             #  direct_html_link_index: 
             ##  (optional integer) index in html_links that you want to use as the main/default report view
-            #'direct_html_link_index': 0,
+            'direct_html_link_index': 0,
             #  html_links: 
             ##  (optional list of dicts) HTML files to attach and display in the report (see the additional information below)
-            #'html_links': html_links,        
+            'html_links': html_links,        
             # file_links: 
             ##  (optional list of dicts) files to attach to the report (see the valid key/vals below)
             'file_links': file_links,         
@@ -341,6 +348,119 @@ class debmicrotrait:
                              'output is not type dict as required.')
         # return the results
         return [output]
+    
+    def run_deb(self, ctx, params):
+        """
+        This example function accepts any number of parameters and returns results in a KBaseReport
+        :param params: instance of mapping from String to unspecified object
+        :returns: instance of type "ReportResults" -> structure: parameter
+           "report_name" of String, parameter "report_ref" of String
+        """
+        # ctx is the context object
+        # return variables are: output
+        #BEGIN run_giannamarsDebmicroTrait
+       
+        console = []
+        invalid_msgs = []
+        objects_created = []
+        file_links = []
+        self.log(console, 'Running giannamarsDebmicroTrait()')
+        report = ''
+        timestamp = int((datetime.utcnow() - datetime.utcfromtimestamp(0)).total_seconds() * 1000)
+        output_dir = os.path.join(self.scratch, 'output_' + str(timestamp))
+        if not os.path.exists(output_dir):
+            os.makedirs(output_dir)
+
+        SERVICE_VER = 'dev'  # DEBUG
+        token = ctx['token']
+        try:
+            wsClient = workspaceService(self.workspaceURL, token=token)
+        except Exception as e:
+            raise ValueError("unable to instantiate wsClient. "+str(e))
+        try:
+            dfuClient = DFUClient(self.callbackURL, token=token, service_ver=SERVICE_VER)
+        except Exception as e:
+            raise ValueError("unable to instantiate dfuClient. "+str(e))
+        
+
+        html_output_dir = os.path.join(output_dir, 'output_html.' + str(timestamp))
+        if not os.path.exists(html_output_dir):
+            os.makedirs(html_output_dir)
+        
+        # Load precomputed data
+        substrate_thermodynamics_data = os.path.join('/kb/module/data', 'substrate_thermodynamic_traits.csv')
+        substrate_thermodynamics = h.plot_substrate_thermodynamic_traits(params, substrate_thermodynamics_data, html_output_dir)
+         # Load precomputed data
+        substrate_kinetics_data = os.path.join('/kb/module/data', 'substrate_kinetic_traits.csv')
+        substrate_kinetics = h.plot_substrate_kinetic_traits(params, substrate_kinetics_data, html_output_dir)
+       
+        # Generate dummy table data 
+        data_array = np.random.rand(3, 39)
+        headers = ['Header ' + str(i) for i in range(1, 40)]  # Sample headers
+
+        api_results = {
+            "png": [substrate_thermodynamics['name'], substrate_kinetics['name']],
+            "header": headers,
+            "data": data_array
+        }
+
+
+        html_report = h.html_add_batch_summary(params, api_results, html_output_dir)
+
+        try:
+            html_upload_ret = dfuClient.file_to_shock({'file_path': html_report['path'],
+                                                'make_handle': 0,
+                                                'pack': 'zip'})
+        except:
+            raise ValueError('error uploading html file to shock')
+        
+        try:
+            png_upload_ret = dfuClient.file_to_shock({'file_path': substrate_thermodynamics['path'],
+                                                'make_handle': 0})
+        except:
+            raise ValueError('error uploading png file to shock')
+
+    
+        reportName = 'view_tree_report_' + str(uuid.uuid4())
+
+        reportObj = {'objects_created': [],
+                     'direct_html_link_index': 0,
+                     'file_links': [],
+                     'html_links': [],
+                     'workspace_name': params['workspace_name'],
+                     'report_object_name': reportName
+                     }
+        
+        reportObj['html_links'] = [{'shock_id': html_upload_ret['shock_id'],
+                                    'name': html_report['name'],
+                                    'label': 'test' + ' HTML'
+                                    }
+                                   ]
+        
+        reportObj['file_links'] = [{'shock_id': png_upload_ret['shock_id'],
+                                    'name': 'pan_circle_plot.png',
+                                    'label': 'test plot'
+                                    }
+                                   ]
+        
+        reportClient = KBaseReport(self.callbackURL, token=ctx['token'], service_ver=SERVICE_VER)
+        report_info = reportClient.create_extended_report(reportObj)
+
+        self.log(console, "BUILDING RETURN OBJECT")
+        output = {'report_name': report_info['name'],
+                  'report_ref': report_info['ref']
+                  }
+
+        self.log(console, "giannamarsDebmicroTrait() DONE")
+        #END run_giannamarsDebmicroTrait
+
+        # At some point might do deeper type checking...
+        if not isinstance(output, dict):
+            raise ValueError('Method run_giannamarsDebmicroTrait return value ' +
+                             'output is not type dict as required.')
+        # return the results
+        return [output]
+
     def status(self, ctx):
         #BEGIN_STATUS
         returnVal = {'state': "OK",

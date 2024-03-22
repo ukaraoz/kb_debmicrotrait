@@ -342,6 +342,10 @@ class Application(object):
                              name='debmicrotrait.run_debmicrotrait',
                              types=[dict])
         self.method_authentication['debmicrotrait.run_debmicrotrait'] = 'required'  # noqa
+        self.rpc_service.add(impl_debmicrotrait.run_deb,
+                             name='debmicrotrait.run_deb',
+                             types=[dict])
+        self.method_authentication['debmicrotrait.run_deb'] = 'required'  # noqa
         self.rpc_service.add(impl_debmicrotrait.status,
                              name='debmicrotrait.status',
                              types=[dict])

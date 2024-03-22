@@ -41,7 +41,7 @@ class debmicrotrait:
     ######################################### noqa
     VERSION = "0.0.1"
     GIT_URL = "https://github.com/ukaraoz/kb_debmicrotrait"
-    GIT_COMMIT_HASH = "883e9bde9166708433006d1a85ce4bd590829d76"
+    GIT_COMMIT_HASH = "cbacc87d4ce4dde70c07c0ab871485bfccf72607"
 
     #BEGIN_CLASS_HEADER
     #END_CLASS_HEADER
@@ -87,7 +87,6 @@ class debmicrotrait:
         # 'workspace_name': 'test_ContigFilter_1710549679759'
         # 'workspace_id'
 
-        print("---FIRST---", "\n")
         logging.info(params)
         params = Params(params)
         #pprint.pprint(params)
@@ -173,7 +172,6 @@ class debmicrotrait:
         pooled_fasta_pathsfile = os.path.join(pooled_fasta_dir, "pooled_fasta_pathsfile.txt")
         with open(pooled_fasta_pathsfile, mode='wt', encoding='utf-8') as pathsfile:
             pathsfile.write('\n'.join(pooled_fasta_fp_l))
-        print("pooled_fasta_pathsfile:", pooled_fasta_pathsfile, "\n")
 
         #pp.pprint(dir(obj))
         #pp.pprint(obj.ref)
@@ -187,16 +185,19 @@ class debmicrotrait:
 
         test_figure_files = os.listdir(test_figures_dir)
         test_figure_files_fp = [os.path.join(test_figures_dir, fn) for fn in os.listdir(test_figures_dir)]
-        for fp in test_figure_files_fp:
-            print(fp, end = '\n')
-        print("----------\n")
+        #for fp in test_figure_files_fp:
+        #    print(fp, end = '\n')
+        #print("----------\n")
         test_datatables_files = os.listdir(test_datatables_dir)
         test_datatables_files_fp = [os.path.join(test_datatables_dir, fn) for fn in os.listdir(test_datatables_dir)]
-        for fp in test_datatables_files_fp:
-            print(fp, end = '\n')
-        print("\n\n")
-        print("---END---", "\n")
-       
+        #for fp in test_datatables_files_fp:
+        #    print(fp, end = '\n')
+        #print("\n\n")
+        print("microtrait_dir:", microtrait_dir, "\n\n\n\n")
+        microtrait_dir_files_fp = [os.path.join(microtrait_dir, 'datatables', fn) for fn in os.listdir(os.path.join(microtrait_dir, 'datatables'))]
+        for fp in microtrait_dir_files_fp:
+            print("$", fp, "$", end = '\n')
+        
         
         ##type_ = app.ws.get_object_info3({
         ##    'objects': [{'ref': ref}]
@@ -231,11 +232,10 @@ class debmicrotrait:
         ### html
         ####
         #####
-        print("APPAPPAPP: ", "\n")
-        pprint.pprint(app)
+        #pprint.pprint(app)
         hb = report.HTMLBuilder(microtrait_dir, report_dir)
         report_fp = hb.write()
-        print("report_fp: ", report_fp, "\n")
+        #print("report_fp: ", report_fp, "\n")
 
         # file_links/html_links
         ## 1. shock_id: (required string) Shock ID for a file. Not required if path is present.
@@ -243,11 +243,56 @@ class debmicrotrait:
         ## 3. name: (required string) name of the file
         ## 4. description: (optional string) Readable description of the file
         ## 5. template: (optional dictionary) A dictionary with keys template_file (required) and template_data_json (optional), specifying a template and accompanying data to be rendered to generate an output file.
-        output_files = get_microtrait_datatables(os.path.join(microtrait_dir, 'datatables'))
-        file_links = [value for key, value in output_files.items()
-                        if value['path'] is not None]
-        print("output_files: ", output_files, "\n")
+        #output_files = get_microtrait_datatables(os.path.join(microtrait_dir, 'datatables'))
+        #file_links = [value for key, value in output_files.items() 
+        #    if value['path'] is not None]
+        #pprint.pprint(file_links)
 
+        file_links = [
+        {
+            'path': os.path.join(microtrait_dir, 'datatables', 'trait_matrixatgranularity3.txt'),
+            'name': 'Microtrait trait matrix at granularity level 3 in tabular format',
+            'label': 'trait_matrixatgranularity3.txt',
+            'description': 'Microtrait trait matrix at granularity level 3 in tabular format'
+        },
+        {
+            'path': os.path.join(microtrait_dir, 'datatables', 'guild2traitprofile.txt'),
+            'name': 'Guild to trait profile in tabular format',
+            'label': 'guild2traitprofile.txt',
+            'description': 'Guild to trait profile in tabular format'
+        },
+        {
+            'path': os.path.join(microtrait_dir, 'datatables', 'trait_matrixatgranularity2.txt'),
+            'name': 'Microtrait trait matrix at granularity level 2 in tabular format',
+            'label': 'trait_matrixatgranularity2.txt',
+            'description': 'Microtrait trait matrix at granularity level 2 in tabular format'
+        },
+        {
+            'path': os.path.join(microtrait_dir, 'datatables', 'trait_matrixatgranularity1.txt'),
+            'name': 'Microtrait trait matrix at granularity level 1 in tabular format',
+            'label': 'trait_matrixatgranularity1.txt',
+            'description': 'Microtrait trait matrix at granularity level 1 in tabular format'
+        },
+        {
+            'path': os.path.join(microtrait_dir, 'datatables', 'rule_matrix.txt'),
+            'name': 'Microtrait rules output in tabular format',
+            'label': 'rule_matrix.txt',
+            'description': 'Microtrait rules output in tabular format'
+        },
+        {
+            'path': os.path.join(microtrait_dir, 'datatables', 'hmm_matrix.txt'),
+            'name': 'Microtrait hmm output in tabular format',
+            'label': 'hmm_matrix.txt',
+            'description': 'Microtrait hmm output in tabular format'
+        },
+        {
+            'path': os.path.join(microtrait_dir, 'datatables', 'genome2guild.txt'),
+            'name': 'Genome to guild table',
+            'label': 'genome2guild.txt',
+            'description': 'Genome to guild table'
+        }]
+
+        print("AAAAA-", os.path.basename(report_fp), "\n")
         html_links = [{
             'path': report_dir,
             'name': os.path.basename(report_fp),
@@ -263,13 +308,13 @@ class debmicrotrait:
             'message': report_text,
             #  direct_html_link_index: 
             ##  (optional integer) index in html_links that you want to use as the main/default report view
-            #'direct_html_link_index': 0,
+            'direct_html_link_index': 0,
             #  html_links: 
             ##  (optional list of dicts) HTML files to attach and display in the report (see the additional information below)
             'html_links': html_links,        
             # file_links: 
             ##  (optional list of dicts) files to attach to the report (see the valid key/vals below)
-            #'file_links': file_links,         
+            'file_links': file_links,         
             # workspace_id: 
             ##  (optional integer) id of your workspace. Preferred over workspace_name as it's immutable. Required if workspace_name is absent.
             #'workspace_id': params['workspace_id'],
