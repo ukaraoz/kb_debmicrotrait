@@ -1,0 +1,59 @@
+#
+# define display information
+#
+name: microTrait - Extract microbial traits and define microbial guilds
+
+tooltip: |
+    Extract microbial traits and define microbial guilds from your assemblies, isolate genomes, or MAGs.
+
+screenshots: []
+
+icon: microtrait_appicon.png
+
+#
+# define a set of similar apps that might be useful to the user
+#
+suggestions:
+    apps:
+        related:
+            []
+        next:
+            []
+
+#
+# Configure the display and description of parameters
+#
+parameters :
+    input_refs :
+        ui-name : |
+            Input assemblies, bins, or genomes
+        short-hint : |
+            Input assemblies, bins, or genomes
+        long-hint  : |
+            Input assemblies, bins, or genomes
+    variance_interguild :
+        ui-name : |
+            Interguild variance to define guilds
+        short-hint : |
+            Interguild variance to define guilds
+        long-hint  : |
+            Interguild variance to define guilds
+    output_name :
+        ui-name : |
+            Output
+        short-hint : |
+            The tag for the outputs
+
+
+description : |
+    <p>microTrait maps a genome sequence into a trait space, including discrete and continuous traits, as well as simple and composite. Traits are inferred from genes and pathways representing energetic, resource acquisition, and stress tolerance mechanisms, while genome-wide signatures are used to infer composite, or life history, traits of microorganisms.</p>
+
+publications :
+    -
+        display-text: |
+            microTrait source code
+        link: https://github.com/ukaraoz/microtrait
+    -
+        display-text: |
+            microTrait publication
+        link: https://www.frontiersin.org/articles/10.3389/fbinf.2022.918853/full
