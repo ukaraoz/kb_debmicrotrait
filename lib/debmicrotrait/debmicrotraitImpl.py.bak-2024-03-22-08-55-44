@@ -243,17 +243,10 @@ class debmicrotrait:
         ## 3. name: (required string) name of the file
         ## 4. description: (optional string) Readable description of the file
         ## 5. template: (optional dictionary) A dictionary with keys template_file (required) and template_data_json (optional), specifying a template and accompanying data to be rendered to generate an output file.
-        #output_files = get_microtrait_datatables(os.path.join(microtrait_dir, 'datatables'))
-        #file_links = [value for key, value in output_files.items() 
-        #    if value['path'] is not None]
-        #pprint.pprint(file_links)
-
-        file_links = [{
-            'path': os.path.join(microtrait_dir, 'datatables', 'trait_matrixatgranularity3.txt'),
-            'name': 'trait_matrixatgranularity3.txt',
-            'label': 'trait_matrixatgranularity3.txt',
-            'description': 'trait_matrixatgranularity3'
-        }]
+        output_files = get_microtrait_datatables(os.path.join(microtrait_dir, 'datatables'))
+        file_links = [value for key, value in output_files.items() 
+            if value['path'] is not None]
+        pprint.pprint(file_links)
 
         html_links = [{
             'path': report_dir,
