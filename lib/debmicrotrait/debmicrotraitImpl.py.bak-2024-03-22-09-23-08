@@ -41,7 +41,7 @@ class debmicrotrait:
     ######################################### noqa
     VERSION = "0.0.1"
     GIT_URL = "https://github.com/ukaraoz/kb_debmicrotrait"
-    GIT_COMMIT_HASH = "88b1eb2d8abae06a413175b5c84ba5c6542643da"
+    GIT_COMMIT_HASH = "883e9bde9166708433006d1a85ce4bd590829d76"
 
     #BEGIN_CLASS_HEADER
     #END_CLASS_HEADER
@@ -256,22 +256,34 @@ class debmicrotrait:
             'description': 'Microtrait trait matrix at granularity level 3 in tabular format'
         },
         {
-            'path': os.path.join(microtrait_dir, 'datatables', 'hmm_matrix.txt'),
-            'name': 'hmm_matrix.txt',
-            'label': 'hmm_matrix.txt',
-            'description': 'Microtrait hmm output in tabular format'
-        },
-        {
             'path': os.path.join(microtrait_dir, 'datatables', 'guild2traitprofile.txt'),
             'name': 'guild2traitprofile.txt',
             'label': 'guild2traitprofile.txt',
             'description': 'Guild to trait profile in tabular format'
         },
         {
-            'path': os.path.join(microtrait_dir, 'datatables', 'genome2guild.txt'),
-            'name': 'genome2guild.txt',
-            'label': 'genome2guild.txt',
-            'description': 'Genome to guild table'
+            'path': os.path.join(microtrait_dir, 'datatables', 'trait_matrixatgranularity2.txt'),
+            'name': 'trait_matrixatgranularity2.txt',
+            'label': 'trait_matrixatgranularity2.txt',
+            'description': 'Microtrait trait matrix at granularity level 2 in tabular format'
+        },
+        {
+            'path': os.path.join(microtrait_dir, 'datatables', 'trait_matrixatgranularity1.txt'),
+            'name': 'trait_matrixatgranularity1.txt',
+            'label': 'trait_matrixatgranularity1.txt',
+            'description': 'Microtrait trait matrix at granularity level 1 in tabular format'
+        },
+        {
+            'path': os.path.join(microtrait_dir, 'datatables', 'rule_matrix.txt'),
+            'name': 'rule_matrix.txt',
+            'label': 'rule_matrix.txt',
+            'description': 'Microtrait rules output in tabular format'
+        },
+        {
+            'path': os.path.join(microtrait_dir, 'datatables', 'hmm_matrix.txt'),
+            'name': 'hmm_matrix.txt',
+            'label': 'hmm_matrix.txt',
+            'description': 'Microtrait hmm output in tabular format'
         }]
 
         html_links = [{
