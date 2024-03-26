@@ -50,6 +50,23 @@ read_data = function(data_folder, type) {
 }
 
 plot = function(data_folder, out_folder, type) {
+    if(type == "thermodynamic") {
+        data = read_data(data_folder, type)
+        p = data %>%
+            ggplot2::ggplot(aes(x = reorder(ontology, -delGcox, FUN = median), y = delGcox, fill=ontology)) +
+            geom_boxplot(alpha=0.3) +
+            geom_jitter(position=position_jitter(0.2)) +
+            scale_x_discrete(guide = guide_axis(angle = 30)) +
+            scale_fill_brewer(palette="BuPu") +
+            theme(legend.position="none", axis.text.x = element_text(size = 12), axis.text.y = element_text(size = 12), axis.title.y = element_text(size = 12)) +
+            xlab("") +
+            scale_y_continuous(name = c(expression("Available Gibbs free energy dG" [cox]* ""* "(kJ/mol)")))
+        
+        pdf_outfile = file.path(out_folder, paste0(type, ".pdf"))
+        suppressMessages(ggsave(p, device = "pdf", width = 8, height = 8, file = pdf_outfile))
+        png_outfile = file.path(out_folder, paste0(type, ".png"))
+        suppressMessages(ggsave(p, device = "png", width = 8, height = 8, file = png_outfile))
+    }
     if(type == "kinetic") {
         data = read_data(data_folder, type)
         p = data %>%
@@ -81,30 +98,34 @@ plot = function(data_folder, out_folder, type) {
             suppressMessages(ggsave(p, device = "pdf", width = 8, height = 8, file = pdf_outfile))
             png_outfile = file.path(out_folder, paste0(type, "_KD.png"))
             suppressMessages(ggsave(p, device = "png", width = 8, height = 8, file = png_outfile))
-        }
     }
-    if(type == "thermodynamic") {
+    if(type == "phenotype") {
         data = read_data(data_folder, type)
-        p = data %>%
-            ggplot2::ggplot(aes(x = reorder(ontology, -delGcox, FUN = median), y = delGcox, fill=ontology)) +
-            geom_boxplot(alpha=0.3) +
-            geom_jitter(position=position_jitter(0.2)) +
-            scale_x_discrete(guide = guide_axis(angle = 30)) +
-            scale_fill_brewer(palette="BuPu") +
-            theme(legend.position="none", axis.text.x = element_text(size = 12), axis.text.y = element_text(size = 12), axis.title.y = element_text(size = 12)) +
-            xlab("") +
-            scale_y_continuous(name = c(expression("Available Gibbs free energy dG" [cox]* ""* "(kJ/mol)")))
+        p <- ggplot(data, aes(x = CUE)) +
+            geom_histogram(alpha=0.3, bins=39) + 
+            xlab("Carbon use efficiency (-)") +
+            ylab("Frequency")
         
-        pdf_outfile = file.path(out_folder, paste0(type, ".pdf"))
+        pdf_outfile = file.path(out_folder, paste0(type, "_CUE.pdf"))
         suppressMessages(ggsave(p, device = "pdf", width = 8, height = 8, file = pdf_outfile))
-        png_outfile = file.path(out_folder, paste0(type, ".png"))
+        png_outfile = file.path(out_folder, paste0(type, "_CUE.png"))
         suppressMessages(ggsave(p, device = "png", width = 8, height = 8, file = png_outfile))
-
-        #data %>%
-        #    ggplot2::ggplot(aes(x = delGcox, fill = ontology)) +
-        #    geom_histogram(bins=10)
+        
+        p <- ggplot(data, aes(x = rgrowth)) +
+            geom_histogram(alpha=0.3, bins=39) + 
+            scale_x_continuous(trans="log10") +
+            xlab("Growth rate (1/h)") +
+            ylab("Frequency")
+        
+        pdf_outfile = file.path(out_folder, paste0(type, "_rgrowth.pdf"))
+        suppressMessages(ggsave(p, device = "pdf", width = 8, height = 8, file = pdf_outfile))
+        png_outfile = file.path(out_folder, paste0(type, "_rgrowth.png"))
+        suppressMessages(ggsave(p, device = "png", width = 8, height = 8, file = png_outfile))
     }
 }
 
-plot(data_folder, figures_folder, type = "kinetic")
 plot(data_folder, figures_folder, type = "thermodynamic")
+plot(data_folder, figures_folder, type = "kinetic")
+plot(data_folder, figures_folder, type = "phenotype")
+
+
