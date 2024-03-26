@@ -20,6 +20,19 @@ args <- parse_args(parser)
 
 
 read_data = function(data_folder, type) {
+    if(type == "thermodynamic") {
+        file = file.path(data_folder, "substrate_thermodynamic_traits.csv")
+        data <- tryCatch(
+            {
+                data = readr::read_delim(file, delim = ",") 
+                data
+            },
+            error = function(e) {
+                print(e, " doesn't exist.") 
+                return(FALSE)
+            }
+        )
+    }
    if(type == "kinetic") {
         file = file.path(data_folder, "substrate_kinetic_traits.csv")
         data <- tryCatch(
@@ -32,9 +45,22 @@ read_data = function(data_folder, type) {
                 return(FALSE)
             }
         )
+   }
+    if(type == "phenotype") {
+        file = file.path(data_folder, "phenotypic_traits.csv")
+        data <- tryCatch(
+            {
+                data = readr::read_delim(file, delim = ",") 
+                data
+            },
+            error = function(e) {
+                print(e, " doesn't exist.") 
+                return(FALSE)
+            }
+        )
     }
-    if(type == "thermodynamic") {
-        file = file.path(data_folder, "substrate_thermodynamic_traits.csv")
+    if(type == "mixed") {
+        file = file.path(data_folder, "mixed_medium.csv")
         data <- tryCatch(
             {
                 data = readr::read_delim(file, delim = ",") 
@@ -122,10 +148,38 @@ plot = function(data_folder, out_folder, type) {
         png_outfile = file.path(out_folder, paste0(type, "_rgrowth.png"))
         suppressMessages(ggsave(p, device = "png", width = 8, height = 8, file = png_outfile))
     }
+    if(type == "mixed") {
+        data = read_data(data_folder, type)
+        
+        p = data %>%
+            ggplot2::ggplot(aes(x = reorder(ontology, -percent_uptake, FUN = median), y = percent_uptake)) +
+            geom_boxplot() +
+            geom_jitter(position=position_jitter(0.2), size=0.4) +
+            scale_x_discrete(guide = guide_axis(angle = 30)) +
+            theme(legend.position="none", axis.text.x = element_text(size = 12), axis.text.y = element_text(size = 12), axis.title.y = element_text(size = 12)) +
+            xlab("") +
+            ylab(("Uptake of substrate from the medium (%)"))
+        
+        pdf_outfile = file.path(out_folder, paste0(type, "_uptake.pdf"))
+        suppressMessages(ggsave(p, device = "pdf", width = 8, height = 8, file = pdf_outfile))
+        png_outfile = file.path(out_folder, paste0(type, "_uptake.png"))
+        suppressMessages(ggsave(p, device = "png", width = 8, height = 8, file = png_outfile))
+        
+        p <- ggplot(data, aes(x = levins_index)) +
+            geom_density() + 
+            xlab("Levins index (-)") +
+            ylab("Frequency")
+        
+        pdf_outfile = file.path(out_folder, paste0(type, "_levins.pdf"))
+        suppressMessages(ggsave(p, device = "pdf", width = 8, height = 8, file = pdf_outfile))
+        png_outfile = file.path(out_folder, paste0(type, "_levins.png"))
+        suppressMessages(ggsave(p, device = "png", width = 8, height = 8, file = png_outfile))
+    }
 }
 
 plot(data_folder, figures_folder, type = "thermodynamic")
 plot(data_folder, figures_folder, type = "kinetic")
 plot(data_folder, figures_folder, type = "phenotype")
+plot(data_folder, figures_folder, type = "mixed")
 
 
