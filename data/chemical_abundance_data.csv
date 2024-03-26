@@ -1,0 +1,84 @@
+ID (unique value),Measurement Type,Chromatography Type,Aggregrate M/Z,Retention Time (min),Unit Medium,Chemical Type,Compound Name,Predicted Formula,Theoretical Mass,ChEBI,Chemical Class,Units,Chemical Ontology Class,Protocol,Identifier
+Exudate_1,Orbitrap,MS/MS,104.071,9.93,water,specific,2-aminoisobutyric acid ,C4H9NO2,103.1198,27971,free amino acids,unknown,unknown,unknown,unknown
+Exudate_2,Orbitrap,MS/MS,153.0182,1.83,water,specific,"2,3-Dihydroxybenzoic acid",C7H6O4,154.1201,18026,aromatic acid,unknown,unknown,unknown,unknown
+Exudate_3,Orbitrap,MS/MS,171.0288,10.82,water,specific,3-Dehydroshikimic acid,C7H8O5,172.1354,30918,aromatic acid,unknown,unknown,unknown,unknown
+Exudate_4,Orbitrap,MS/MS,116.0717026,12.24,water,specific,5-aminovaleric acid,C5H11NO2,117.14638,15887,free amino acids,unknown,unknown,unknown,unknown
+Exudate_5,Orbitrap,MS/MS,263.1264,2,water,specific,abscisic acid,C15H20O4 ,264.3169,2365,aromatic acid,unknown,unknown,unknown,unknown
+Exudate_6,Orbitrap,MS/MS,134.0472,4.53,water,specific,adenine,C5H5N5,135.1269,16708,nucleic acid component,unknown,unknown,unknown,unknown
+Exudate_7,Orbitrap,MS/MS,268.1038,4.62,water,specific,adenosine,C10H13N5O4,267.24152,16335,nucleic acid component,unknown,unknown,unknown,unknown
+Exudate_8,Orbitrap,MS/MS,90.0555,11.1,water,specific,alanine,C3H7NO2,89.09322,15570,free amino acids,unknown,unknown,unknown,unknown
+Exudate_9,Orbitrap,MS/MS,145.013,15.11,water,specific,alpha-ketoglutaric acid ,C5H6O5,146.0981,30915,aromatic acid,unknown,unknown,unknown,unknown
+Exudate_10,Orbitrap,MS/MS,173.1034,21.13,water,specific,arginine,C6H14N4O2,174.20112,29016,free amino acids,unknown,unknown,unknown,unknown
+Exudate_11,Orbitrap,MS/MS,131.0449,12.52,water,specific,asparagine ,C4H8N2O3,132.118,22653,free amino acids,unknown,unknown,unknown,unknown
+Exudate_12,Orbitrap,MS/MS,160.0968,8.13,water,specific,betonicine,C7H13NO3,159.183,85533,free amino acids,unknown,unknown,unknown,unknown
+Exudate_13,Orbitrap,MS/MS,245.0956,7.3,water,specific,biotin ,C10H16N2O3S,244.31172,15956,aromatic acid,unknown,unknown,unknown,unknown
+Exudate_14,Orbitrap,MS/MS,179.0341,2.1,water,specific,caffeic acid,C9H8O4,180.1574,36281,aromatic acid,unknown,unknown,unknown,unknown
+Exudate_15,Orbitrap,MS/MS,104.1072,7.11,water,specific,choline,C5H13NO,104.1708,15354,free amino acids,unknown,unknown,unknown,unknown
+Exudate_16,Orbitrap,MS/MS,173.0082,18.2,water,specific,cis-aconitic acid,C6H6O6,174.10824,32805,aromatic acid,unknown,unknown,unknown,unknown
+Exudate_17,Orbitrap,MS/MS,242.0783,7.58,water,specific,cytidine,C9H13N3O5,243.21674,17562,nucleic acid component,unknown,unknown,unknown,unknown
+Exudate_18,Orbitrap,MS/MS,163.0598,5.5,water,specific,rhamnose,C6H12O5,164.157,26546,carbohydrate,unknown,unknown,unknown,unknown
+Exudate_19,Orbitrap,MS/MS,266.0897,7.22,water,specific,deoxyguanosine,C10H13N5O4,267.2413,17172,nucleic acid component,unknown,unknown,unknown,unknown
+Exudate_20,Orbitrap,MS/MS,341.1091,12.67,water,specific,maltose,C12H22O11,342.29648,17306,carbohydrate,unknown,unknown,unknown,unknown
+Exudate_21,Orbitrap,MS/MS,341.1093,11.77,water,specific,sucrose,C12H22O11,342.29648,17992,carbohydrate,unknown,unknown,unknown,unknown
+Exudate_22,Orbitrap,MS/MS,115.0022,15.83,water,specific,fumaric acid ,C4H4O4,116.0722,18012,aromatic acid,unknown,unknown,unknown,unknown
+Exudate_23,Orbitrap,MS/MS,102.0546,11.88,water,specific,aminobutyric acid,C4H9NO2,103.1198,16865,free amino acids,unknown,unknown,unknown,unknown
+Exudate_24,Orbitrap,MS/MS,74.0231,12.1,water,specific,glycine ,C2H5NO2,75.06664,15428,free amino acids,unknown,unknown,unknown,unknown
+Exudate_25,Orbitrap,MS/MS,118.0864,6.59,water,specific,glycine betaine,"	C5H11NO2",117.14638,17750,free amino acids,unknown,unknown,unknown,unknown
+Exudate_26,Orbitrap,MS/MS,152.0565,7.63,water,specific,guanine,C5H5N5O,151.126,16235,nucleic acid component,unknown,unknown,unknown,unknown
+Exudate_27,Orbitrap,MS/MS,284.0987,8.86,water,specific,guanosine,C10H13N5O5,283.24092,16750,nucleic acid component,unknown,unknown,unknown,unknown
+Exudate_28,Orbitrap,MS/MS,203.0526,8.64,water,specific,fructose,C6H12O6,180.15588,15824,carbohydrate,unknown,unknown,unknown,unknown
+Exudate_29,Orbitrap,MS/MS,203.0523,9.87,water,specific,glucose,C6H12O6,180.15588,17234,carbohydrate,unknown,unknown,unknown,unknown
+Exudate_30,Orbitrap,MS/MS,154.0612,14.6,water,specific,histidine,C6H9N3O2,155.15468,27570,free amino acids,unknown,unknown,unknown,unknown
+Exudate_31,Orbitrap,MS/MS,120.0654,11.79,water,specific,homoserine ,C4H9NO3,119.1192,30653,free amino acids,unknown,unknown,unknown,unknown
+Exudate_32,Orbitrap,MS/MS,137.0456,5.26,water,specific,hypoxanthine,C5H4N4O,136.11162,17368,nucleic acid component,unknown,unknown,unknown,unknown
+Exudate_33,Orbitrap,MS/MS,174.055,4.48,water,specific,indole-3-acetic acid,C10H9NO2 ,175.184,16411,secondary metabolite,unknown,unknown,unknown,unknown
+Exudate_34,Orbitrap,MS/MS,267.0733,6.74,water,specific,inosine ,C10H12N4O5,268.2261,17596,nucleic acid component,unknown,unknown,unknown,unknown
+Exudate_35,Orbitrap,MS/MS,130.0861,7.89,water,specific,isoleucine ,C6H13NO2,131.175,17191,free amino acids,unknown,unknown,unknown,unknown
+Exudate_36,Orbitrap,MS/MS,209.1178,1.41,water,specific,jasmonic acid,C12H18O3 ,210.2695,18292,aromatic acid,unknown,unknown,unknown,unknown
+Exudate_37,Orbitrap,MS/MS,132.0289,13.99,water,specific,L-aspartic acid,C4H7NO4,133.1027,17053,free amino acids,unknown,unknown,unknown,unknown
+Exudate_38,Orbitrap,MS/MS,162.1121,9.67,water,specific,L-carnitine,C7H15NO3,161.19894,17126,free amino acids,unknown,unknown,unknown,unknown
+Exudate_39,Orbitrap,MS/MS,174.087,13.01,water,specific,L-citrulline,C6H13N3O3,175.18584,16349,free amino acids,unknown,unknown,unknown,unknown
+Exudate_40,Orbitrap,MS/MS,146.0447,13.7,water,specific,L-glutamate ,C5H9NO4,147.1293,16015,free amino acids,unknown,unknown,unknown,unknown
+Exudate_41,Orbitrap,MS/MS,132.0656,10.97,water,specific,L-hydroxyproline,C5H9NO3,131.1299,18240,free amino acids,unknown,unknown,unknown,unknown
+Exudate_42,Orbitrap,MS/MS,130.0497,9.51,water,specific,L-pyroglutamic acid,C5H7NO3,129.114,18183,free amino acids,unknown,unknown,unknown,unknown
+Exudate_43,Orbitrap,MS/MS,182.0808,9.94,water,specific,L-tyrosine ,C9H11NO3,181.18858,17895,free amino acids,unknown,unknown,unknown,unknown
+Exudate_44,Orbitrap,MS/MS,180.0658,7.6,water,specific,lactic acid,C3H6O3,90.07794,422,aromatic acid,unknown,unknown,unknown,unknown
+Exudate_45,Orbitrap,MS/MS,89.023,7.32,water,specific,leucine,C6H13NO2,131.17296,25017,free amino acids,unknown,unknown,unknown,unknown
+Exudate_46,Orbitrap,MS/MS,130.0861,1.26,water,specific,linoleic acid,C18H32O2,280.4455,17351,lipid,unknown,unknown,unknown,unknown
+Exudate_47,Orbitrap,MS/MS,279.233,21.8,water,specific,lysine,C6H14N2O2,146.18764,25094,free amino acids,unknown,unknown,unknown,unknown
+Exudate_48,Orbitrap,MS/MS,145.0971,17.2,water,specific,malic acid,C4H6O5,134.08744,6650,aromatic acid,unknown,unknown,unknown,unknown
+Exudate_49,Orbitrap,MS/MS,133.013,12.13,water,specific,malonic acid ,C3H4O4,104.06146,30794,aromatic acid,unknown,unknown,unknown,unknown
+Exudate_50,Orbitrap,MS/MS,103.0021,8.63,water,specific,methionine ,C5H11NO2S,149.21238,16811,free amino acids,unknown,unknown,unknown,unknown
+Exudate_51,Orbitrap,MS/MS,148.0426,7.5,water,specific,N-acetyl-D-glucosamine ,C8H15NO6,221.2078,506227,carbohydrate,unknown,unknown,unknown,unknown
+Exudate_52,Orbitrap,MS/MS,220.082,6.26,water,specific,nicotinic acid,C6H5NO2,123.10944,15940,aromatic acid,unknown,unknown,unknown,unknown
+Exudate_53,Orbitrap,MS/MS,122.0234,21.16,water,specific,ornithine,C5H12N2O2,132.16106,18257,free amino acids,unknown,unknown,unknown,unknown
+Exudate_54,Orbitrap,MS/MS,131.0812,7.51,water,specific,pantothenic acid ,C9H17NO5,219.23502,7916,aromatic acid,unknown,unknown,unknown,unknown
+Exudate_55,Orbitrap,MS/MS,218.1031,7.4,water,specific,arabinose,C5H10O5,150.1299,22599,carbohydrate,unknown,unknown,unknown,unknown
+Exudate_56,Orbitrap,MS/MS,149.0443,5.67,water,specific,D-ribose,C5H10O5,150.1299,16988,carbohydrate,unknown,unknown,unknown,unknown
+Exudate_57,Orbitrap,MS/MS,149.0443,11.05,water,specific,xylose,C5H10O5,150.13,18222,carbohydrate,unknown,unknown,unknown,unknown
+Exudate_58,Orbitrap,MS/MS,149.0444,7.35,water,specific,phenylalanine ,C9H11NO2,165.18918,28044,free amino acids,unknown,unknown,unknown,unknown
+Exudate_59,Orbitrap,MS/MS,164.0708,8.64,water,specific,proline ,C5H9NO2,115.1305,26271,free amino acids,unknown,unknown,unknown,unknown
+Exudate_60,Orbitrap,MS/MS,114.0547,2.38,water,specific,salicylic acid,C7H6O3,138.1207,16914,aromatic acid,unknown,unknown,unknown,unknown
+Exudate_61,Orbitrap,MS/MS,137.0232,12.8,water,specific,serine ,C3H7NO3,105.09262,17822,free amino acids,unknown,unknown,unknown,unknown
+Exudate_62,Orbitrap,MS/MS,104.0339,12.87,water,specific,shikimic acid,C7H10O5,174.1513,16119,aromatic acid,unknown,unknown,unknown,unknown
+Exudate_63,Orbitrap,MS/MS,173.0447,1.5,water,specific,sinapyl alcohol,C11H14O4,210.2265,28813,aromatic acid,unknown,unknown,unknown,unknown
+Exudate_64,Orbitrap,MS/MS,209.0812,6.03,water,specific,stachyhydrine,C7H13NO2,143.1836,86534,aromatic acid,unknown,unknown,unknown,unknown
+Exudate_65,Orbitrap,MS/MS,144.1015,13.7,water,specific,succinic acid,C4H6O4,118.088,15741,aromatic acid,unknown,unknown,unknown,unknown
+Exudate_66,Orbitrap,MS/MS,117.0179,12.98,water,specific,inositol,C6H12O6,180.15588,17268,carbohydrate,unknown,unknown,unknown,unknown
+Exudate_67,Orbitrap,MS/MS,179.0553,5.03,water,specific,syringic acid,C9H10O5,198.1727,68329,aromatic acid,unknown,unknown,unknown,unknown
+Exudate_68,Orbitrap,MS/MS,197.0448,11.52,water,specific,taurine,C2H7NO3S,125.148,15891,aromatic acid,unknown,unknown,unknown,unknown
+Exudate_69,Orbitrap,MS/MS,126.022,8.3,water,specific,thiamine,C12H17N4OS,265.35574,18385,aromatic acid,unknown,unknown,unknown,unknown
+Exudate_70,Orbitrap,MS/MS,265.1122,11.47,water,specific,threonic acid,C4H8O5,136.103,26984,aromatic acid,unknown,unknown,unknown,unknown
+Exudate_71,Orbitrap,MS/MS,135.0287,11.49,water,specific,threonine ,C4H9NO3,119.119,26986,free amino acids,unknown,unknown,unknown,unknown
+Exudate_72,Orbitrap,MS/MS,118.0496,2.56,water,specific,thymidine,C10H14N2O5,242.2286,17748,nucleic acid component,unknown,unknown,unknown,unknown
+Exudate_73,Orbitrap,MS/MS,241.08,2.32,water,specific,trans-cinnamic acid,C9H8O2,148.15862,35697,aromatic acid,unknown,unknown,unknown,unknown
+Exudate_74,Orbitrap,MS/MS,147.0441,3.83,water,specific,trans-ferulic acid,C10H10O4,194.184,17620,aromatic acid,unknown,unknown,unknown,unknown
+Exudate_75,Orbitrap,MS/MS,193.0498,7.35,water,specific,trigonelline,C7H7NO2,137.13602,18123,aromatic acid,unknown,unknown,unknown,unknown
+Exudate_76,Orbitrap,MS/MS,138.0548,8.37,water,specific,tryptophan,C11H12N2O2,204.22526,27897,free amino acids,unknown,unknown,unknown,unknown
+Exudate_77,Orbitrap,MS/MS,205.0968,3.19,water,specific,uracil,C4H4N2O2,112.08684,17568,nucleic acid component,unknown,unknown,unknown,unknown
+Exudate_78,Orbitrap,MS/MS,113.0345,4.93,water,specific,uridine,C9H12N2O6,244.20146,16704,nucleic acid component,unknown,unknown,unknown,unknown
+Exudate_79,Orbitrap,MS/MS,245.0768,9.02,water,specific,valine ,C5H11NO2,117.14638,27266,free amino acids,unknown,unknown,unknown,unknown
+Exudate_80,Orbitrap,MS/MS,118.0862,6.66,water,specific,vanillic acid,C8H8O4,168.14672,30816,aromatic acid,unknown,unknown,unknown,unknown
+Exudate_81,Orbitrap,MS/MS,167.0339,1.46,water,specific,vanillin,C8H8O3,152.1473,18346,aromatic acid,unknown,unknown,unknown,unknown
+Exudate_82,Orbitrap,MS/MS,151.039,6.12,water,specific,xanthine,C5H4N4O2,152.111,15318,nucleic acid component,unknown,unknown,unknown,unknown
+Exudate_83,Orbitrap,MS/MS,151.025,2.33,water,specific,linoleic acid,C18H32O2,280.4455,17351,lipid,unknown,unknown,unknown,unknown
