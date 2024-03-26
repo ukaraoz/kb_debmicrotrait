@@ -24,12 +24,7 @@ read_data = function(data_folder, type) {
         file = file.path(data_folder, "substrate_kinetic_traits.csv")
         data <- tryCatch(
             {
-                data = readr::read_delim(file, delim = ",") %>%
-                    tidyr::pivot_longer(!c(guildid, Ontology), names_to = "type", values_to = "value") %>%
-                    # assumes all levels always exist
-                    dplyr::mutate(Ontology = factor(Ontology, 
-                                                    levels = c("Amino acids", "Organic acids", "Nucleotides", "Sugars", "Auxins", "Fatty acids"),
-                                                    ordered = T))  
+                data = readr::read_delim(file, delim = ",") 
                 data
             },
             error = function(e) {
@@ -56,39 +51,35 @@ read_data = function(data_folder, type) {
 
 plot = function(data_folder, out_folder, type) {
     if(type == "kinetic") {
-        variables = c("Vmax", "KD")
-        # todo: add units, breaks the expression code
-        labels = c(expression('Maximum specific uptake rate V'[max]), expression('Half saturation constant K'[0]))
         data = read_data(data_folder, type)
+        p = data %>%
+            ggplot2::ggplot(aes(x = reorder(ontology, -Vmax, FUN = median), y = Vmax, fill=ontology)) +
+            geom_jitter(position=position_jitter(0.15), size=0.01) +
+            geom_boxplot(alpha=0.3, outlier.shape = NA) +
+            scale_y_continuous(trans='log10', name = c(expression("Maximum specific uptake rate V" [max]* ""* "(mM)"))) +
+            scale_x_discrete(guide = guide_axis(angle = 30)) +
+            scale_fill_brewer(palette="BuPu") +
+            theme(legend.position="none", axis.text.x = element_text(size = 12), axis.text.y = element_text(size = 12), axis.title.y = element_text(size = 12)) +
+            xlab("")
         
-        classes = c("Amino acids", "Organic acids", "Nucleotides", "Sugars", "Auxins", "Fatty acids")
-        pairs = t(combn(classes, 2))
-        comparisons = list()
-        for(i in 1:nrow(pairs)) { comparisons[[i]] = pairs[i,]}
-
-        for(i in 1:length(variables)) {
-            p = data %>%
-                dplyr::filter(type == variables[i]) %>%
-                ggpubr::ggboxplot(x = "Ontology", y = "value",
-                                  color = "black", fill = "white", size = 0.5, 
-                                  #add.params = list(color = "black", size= 1.5),
-                                  #add = "jitter", 
-                                  ylab = "") + 
-                # ggboxplot doesn't work with expression in the labels
-                labs(y = labels[i], x = "") + 
-                scale_y_continuous(trans='log10') +
-                annotation_logticks(sides = "l") +
-                scale_y_log10(breaks = scales::trans_breaks("log10", function(x) 10^x),
-                              labels = scales::trans_format("log10", math_format(10^.x)))
-            p = p + stat_compare_means(label = "p.sign", method = "wilcox.test", 
-                                       label.y = 0.1,
-                                        method.args = list(alternative = "two.sided"), 
-                                        comparisons = comparisons, 
-                                        symnum.args = list(cutpoints = c(0, 0.001, 0.01, 0.05, Inf), symbols = c("***", "**", "*", "NS")),
-                                        show.legend = F, bracket.size=0.2, tip.length=0.01, vjust=1, step.increase=0.015)
-            pdf_outfile = file.path(out_folder, paste0(type, ".", variables[i], ".pdf"))
+            pdf_outfile = file.path(out_folder, paste0(type, "_Vmax.pdf"))
             suppressMessages(ggsave(p, device = "pdf", width = 8, height = 8, file = pdf_outfile))
-            png_outfile = file.path(out_folder, paste0(type, ".", variables[i], ".png"))
+            png_outfile = file.path(out_folder, paste0(type, "_Vmax.png"))
+            suppressMessages(ggsave(p, device = "png", width = 8, height = 8, file = png_outfile))
+            
+            p = data %>%
+                ggplot2::ggplot(aes(x = reorder(ontology, -KD, FUN = median), y = KD, fill=ontology)) +
+                geom_jitter(position=position_jitter(0.15), size=0.01) +
+                geom_boxplot(alpha=0.3, outlier.shape = NA) +
+                scale_y_continuous(trans='log10', name = c(expression("Half saturation constant K" [0]* ""* "(mM)"))) +
+                scale_x_discrete(guide = guide_axis(angle = 30)) +
+                scale_fill_brewer(palette="BuPu") +
+                theme(legend.position="none", axis.text.x = element_text(size = 12), axis.text.y = element_text(size = 12), axis.title.y = element_text(size = 12)) +
+                xlab("")
+            
+            pdf_outfile = file.path(out_folder, paste0(type, "_KD.pdf"))
+            suppressMessages(ggsave(p, device = "pdf", width = 8, height = 8, file = pdf_outfile))
+            png_outfile = file.path(out_folder, paste0(type, "_KD.png"))
             suppressMessages(ggsave(p, device = "png", width = 8, height = 8, file = png_outfile))
         }
     }
