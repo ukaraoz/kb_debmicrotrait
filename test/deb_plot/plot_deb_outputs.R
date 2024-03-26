@@ -95,11 +95,15 @@ plot = function(data_folder, out_folder, type) {
     if(type == "thermodynamic") {
         data = read_data(data_folder, type)
         p = data %>%
-            ggplot2::ggplot(aes(x=ontology, y=delGcox)) +
-            geom_boxplot() +
+            ggplot2::ggplot(aes(x = reorder(ontology, -delGcox, FUN = median), y = delGcox, fill=ontology)) +
+            geom_boxplot(alpha=0.3) +
+            geom_jitter(position=position_jitter(0.2)) +
+            scale_x_discrete(guide = guide_axis(angle = 30)) +
+            scale_fill_brewer(palette="BuPu") +
+            theme(legend.position="none", axis.text.x = element_text(size = 12), axis.text.y = element_text(size = 12), axis.title.y = element_text(size = 12)) +
             xlab("") +
-            ylab("deltaG")
-            #ylab(expression(Delta))
+            scale_y_continuous(name = c(expression("Available Gibbs free energy dG" [cox]* ""* "(kJ/mol)")))
+        
         pdf_outfile = file.path(out_folder, paste0(type, ".pdf"))
         suppressMessages(ggsave(p, device = "pdf", width = 8, height = 8, file = pdf_outfile))
         png_outfile = file.path(out_folder, paste0(type, ".png"))
