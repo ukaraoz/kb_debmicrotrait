@@ -72,6 +72,19 @@ read_data = function(data_folder, type) {
             }
         )
     }
+    if(type == "competition") {
+        file = file.path(data_folder, "competition.csv")
+        data <- tryCatch(
+            {
+                data = readr::read_delim(file, delim = ",") 
+                data
+            },
+            error = function(e) {
+                print(e, " doesn't exist.") 
+                return(FALSE)
+            }
+        )
+    }
     data
 }
 
@@ -175,11 +188,15 @@ plot = function(data_folder, out_folder, type) {
         png_outfile = file.path(out_folder, paste0(type, "_levins.png"))
         suppressMessages(ggsave(p, device = "png", width = 8, height = 8, file = png_outfile))
     }
+    if(type == "competition") {
+        data = read_data(data_folder, type)
+        
+    }
 }
 
 plot(data_folder, figures_folder, type = "thermodynamic")
 plot(data_folder, figures_folder, type = "kinetic")
 plot(data_folder, figures_folder, type = "phenotype")
 plot(data_folder, figures_folder, type = "mixed")
-
+plot(data_folder, figures_folder, type = "competition")
 
