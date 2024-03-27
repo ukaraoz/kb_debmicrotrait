@@ -24,6 +24,20 @@ suggestions:
 # Configure the display and description of parameters
 #
 parameters :
+    trait_refs :
+       ui-name : |
+           Trait Matrix
+       short-hint : |
+           Trait Matrix object for GenomeSet
+
+    variance_interguild :
+        ui-name : |
+            Interguild variance to define guilds
+        short-hint : |
+            Interguild variance to define guilds
+        long-hint  : |
+            Interguild variance to define guilds 
+
     media_refs :
        ui-name : |
            Media or Chemical Abundance Matrix
