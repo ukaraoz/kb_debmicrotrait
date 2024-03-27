@@ -190,7 +190,19 @@ plot = function(data_folder, out_folder, type) {
     }
     if(type == "competition") {
         data = read_data(data_folder, type)
+        # this need a better color palette and way to handle the legend
+        p <- ggplot(data, aes(fill=guild_id, y=relative_biomass, x=ontology)) + 
+            geom_bar(position="stack", stat="identity") +
+            scale_x_discrete(guide = guide_axis(angle = 30)) +
+            theme(legend.position="none", axis.text.x = element_text(size = 12), axis.text.y = element_text(size = 12), axis.title.y = element_text(size = 12)) +
+            xlab("") +
+            ylab("Relative abundance (%)")
+            # scale_fill_brewer(palette="Blues")
         
+        pdf_outfile = file.path(out_folder, paste0(type, ".pdf"))
+        suppressMessages(ggsave(p, device = "pdf", width = 8, height = 8, file = pdf_outfile))
+        png_outfile = file.path(out_folder, paste0(type, ".png"))
+        suppressMessages(ggsave(p, device = "png", width = 8, height = 8, file = png_outfile))
     }
 }
 
