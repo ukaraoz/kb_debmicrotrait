@@ -360,12 +360,11 @@ class debmicrotrait:
         # return variables are: output
         #BEGIN run_deb
 
-        logging.info(params)
-        params = Params(params)
+        #logging.info(params)
+        #params = Params(params)
 
         app.update({
             'run_dir': os.path.join(app.shared_folder, 'run_deb_' + str(uuid.uuid4())), # folder dedicated to this API-method run
-            'params': params,
         })
         os.mkdir(app.run_dir)
 
