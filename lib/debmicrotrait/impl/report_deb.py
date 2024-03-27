@@ -63,8 +63,8 @@ class HTMLBuilder():
     def write(self):
         self._build_figures()
 
-        REPORT_HTML_TEMPLATE_FLPTH = '/kb/module/lib/debmicrotrait/template/report_deb.html'
-        html_fp = os.path.join(app.report_dir, 'report_deb.html')
+        REPORT_HTML_TEMPLATE_FLPTH = '/kb/module/lib/debmicrotrait/template/report.html'
+        html_fp = os.path.join(app.report_dir, 'report.html')
 
         with open(REPORT_HTML_TEMPLATE_FLPTH, 'r') as src_fh:
             with open(html_fp, 'w') as dst_fh:
