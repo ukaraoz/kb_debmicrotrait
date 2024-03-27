@@ -150,7 +150,12 @@
             "default_values": [
                 "rhizosphere_isolate_genomes (v1)"
             ],
-            "field_type": "text"
+            "field_type": "text",
+            "text_options": {
+                "valid_ws_types": [
+                    "KBaseSets.GenomeSet"
+                ]
+            }
         },
         {
             "id": "variance_interguild",
