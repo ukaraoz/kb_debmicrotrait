@@ -2,7 +2,7 @@ module-name:
     debmicrotrait
 
 module-description:
-    A KBase module
+    A KBase module to run DEBmicroTrait
 
 service-language:
     python
@@ -11,5 +11,5 @@ module-version:
     0.0.1
 
 owners:
-    [ukaraoz]
+    [ukaraoz, giannamars]
 
