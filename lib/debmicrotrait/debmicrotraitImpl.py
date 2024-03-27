@@ -21,6 +21,7 @@ from .util.microtrait import get_microtrait_datatables
 from .impl.config import app, reset_globals
 from .impl.params import Params
 from .impl import report
+from .impl import report_deb
 #END_HEADER
 
 
@@ -358,13 +359,66 @@ class debmicrotrait:
         # ctx is the context object
         # return variables are: output
         #BEGIN run_deb
-        report = KBaseReport(self.callback_url)
-        report_info = report.create({'report': {'objects_created':[],
-                                                'text_message': params['parameter_1']},
-                                                'workspace_name': params['workspace_name']})
+
+        logging.info(params)
+        params = Params(params)
+
+        app.update({
+            'run_dir': os.path.join(app.shared_folder, 'run_deb_' + str(uuid.uuid4())), # folder dedicated to this API-method run
+            'params': params,
+        })
+        os.mkdir(app.run_dir)
+
+        deb_dir = os.path.join(app.run_dir, 'deb_dir')
+        report_dir = os.path.join(app.run_dir, 'report')
+        app.update(
+            dict(
+                deb_dir=deb_dir,
+                report_dir=report_dir,
+            )
+        )
+
+        test_dir = "/kb/module/test/data/deb/rhizosphere"
+        shutil.copytree(test_dir, deb_dir)
+
+        test_figures_dir = os.path.join(test_dir, 'figures')
+        test_datatables_dir = os.path.join(test_dir, 'datatables')
+
+        hb = report_deb.HTMLBuilder(deb_dir, report_dir)
+        report_fp = hb.write()
+
+        html_links = [{
+            'path': report_dir,
+            'name': os.path.basename(report_fp),
+        }]
+
+        report_text = 'Ran deb, results are packaged below. \n\n'
+        report_params = {
+            # report_object_name: 
+            ##  (optional string) a name to give the workspace object that stores the report.
+            'report_object_name': 'kb_deb_report',  
+            # message: 
+            ##  (optional string) basic result message to show in the report
+            'message': report_text,
+            #  direct_html_link_index: 
+            ##  (optional integer) index in html_links that you want to use as the main/default report view
+            'direct_html_link_index': 0,
+            #  html_links: 
+            ##  (optional list of dicts) HTML files to attach and display in the report (see the additional information below)
+            'html_links': html_links,        
+            # file_links: 
+            ##  (optional list of dicts) files to attach to the report (see the valid key/vals below)
+            'workspace_name': params['workspace_name'],
+            # objects_created: 
+            ##  (optional list of WorkspaceObject) data objects that were created as a result of running your app, such as assemblies or genomes
+            #'objects_created': objects_created,
+        }
+        report_output = app.kbr.create_extended_report(report_params)
+
         output = {
-            'report_name': report_info['name'],
-            'report_ref': report_info['ref'],
+            'report_name': report_output['name'],
+            'report_ref': report_output['ref'],
+            'objects_created': [],
         }
         #END run_deb
 
