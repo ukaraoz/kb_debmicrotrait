@@ -33,6 +33,8 @@ parameters :
     variance_interguild :
         ui-name : |
             Interguild variance to define guilds
+        short-hint : |
+            Interguild variance to define guild
 
     media_refs :
        ui-name : |
