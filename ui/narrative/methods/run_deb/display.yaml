@@ -1,7 +1,7 @@
 #
 # define display information
 #
-name: DEBmicroTrait - v1.0.0
+name: DEBmicroTrait - Run dynamic energy budget (DEB) model simulations
 
 tooltip: |
     Run dynamic energy budget (DEB) model simulations for select traits in a TraitMatrix
@@ -49,30 +49,6 @@ parameters :
             DEBmicroTrait Simulation Type
         long-hint  : |
             simulation_type 
-
-    granularity_acquisition :
-        ui-name : |
-            Granularity
-        short-hint : |
-            [1,2,3], with 1 - default (lowest) granularity
-        long-hint  : |
-            Trait Matrix granularity
-
-    granularity_use :
-        ui-name : |
-            Granularity
-        short-hint : |
-            [1,2,3], with 1 - default (lowest) granularity
-        long-hint  : |
-            Trait Matrix granularity
-
-    granularity_stress :
-        ui-name : |
-            Granularity
-        short-hint : |
-            [1,2,3], with 1 - default (lowest) granularity
-        long-hint  : |
-            Trait Matrix granularity
  
     simulation_type :
         ui-name : |
@@ -88,22 +64,6 @@ parameters :
           short-hint: |
               Output name(s) prefix. Will be appended with '_html', etc.
 
-
-parameter-groups:
-    acquisition_traits:
-        ui-name: |
-            Resource Acquisition Traits
-        short-hint: |
-
-    resource_use_traits:
-        ui-name: |
-            Resource Use Traits
-        short-hint: |
-
-    stress_tolerance_traits:
-        ui-name: |
-            Stress Tolerance Traits
-        short-hint: |
 
 description : |
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed pulvinar efficitur felis, quis tincidunt sem congue at. Vivamus ornare feugiat faucibus. Fusce tincidunt mattis nunc, nec varius purus convallis quis. Nulla facilisi. In at magna dolor. Suspendisse sit amet felis at arcu auctor dapibus vitae pharetra dui. Nam semper mi quis tortor fermentum mollis. Donec a arcu pharetra, rutrum dolor vitae, rutrum mauris. Donec ornare fringilla sagittis. Nam laoreet est in elementum malesuada. Vestibulum id mi eget urna hendrerit feugiat. Donec et ultrices nulla. Phasellus diam eros, dapibus at tempus nec, semper vel ante.</p>
