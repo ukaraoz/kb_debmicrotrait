@@ -74,10 +74,10 @@ description : |
     
         <h2>DEBmicroTrait</h2>
         <p>
-            Therefore, we have developed and tested a computational workflow to (1) infer ecologically relevant traits from microbial genomes, (2) systematically reduce the high-dimensionality of genome-level microbial trait-data by inferring functional guilds (sets of organisms performing the same ecological function irrespective of their phylogenetic origin), (3) quantify within-guild trait variance and capture trait linkages in trait-based models, and (4) explore trait-based simulations under different scenarios with varying levels of microbial community and environmental complexity.</a>.
+            Therefore, we have developed and tested computational workflows that enable seamless prediction of ecophysiological traits of bacteria and archaea from KBase genomes (microTrait) and their representation in a coherent dynamic energy budget-based trait-based modeling framework (DEBmicroTrait).  DEBmicroTrait runs trait-based simulations under different scenarios with varying levels of microbial community and environmental complexity.</a>.
         </p>
     
-        <h3>Trait Granularity</h3>
+        <h3>Trait Granularity - v0.0.1</h3>
     
         <h4>Resource Acquisition</h4>    
         <p> “Resource Acquisition:Substrate uptake:free amino acids transport”<p>
@@ -88,61 +88,20 @@ description : |
         <p> “Resource Acquisition:Substrate uptake:nucleic acid component transport”<p>
         <p> “Resource Acquisition:Substrate degradation:complex carbohydrate depolymerization”<p>
     
-        <h4>Growth Yield Difference (GYD)</h4>    
-        <p>
-            The GYD score evaluates the disparity in growth rate between the isolated members
-                <img src="https://github.com/freiburgermsu/microbial_interactions/blob/main/ui/narrative/methods/run_microbial_interactions/GYD.png?sanitize=true">
-            by normalizing the difference in the member's growth rates by the growth rate of the slower growing member. A relatively large disparity in the isolate growth rates may foreshadow a negative interaction when the members are combined, where one member rapidly begins dominating the environment and media consumption which leaves the other member potentially starved and possibly launching antibiotic warfare in desparation to survive.
-        </p>
+        <h4>Resource Use</h4>    
+        <p> “Resource Use:Chemotrophy:chemoorganoheterotrophy:aerobic respiration”<p>
+
+        <h4>Stress Tolerance</h4>    
+        <p> “Stress Tolerance:General:scavenging of reactive oxygen species”<p>
+        <p> “Stress Tolerance:General:protection, repair, degradation of denatured/misfolded proteins”<p>
+        <p> “Stress Tolerance:General:biofilm formation”<p>
     
-        <h4>Costless Interaction Potential (CIP)</h4>    
-        <p>
-            The CIP score quantifies the union of costless excreta <i>CE</i> (compounds that are excreted at maximal growth and therefore have no fitness cost associated with their excretion) in the isolated members
-                <img src="https://github.com/freiburgermsu/microbial_interactions/blob/main/ui/narrative/methods/run_microbial_interactions/CIP.png?sanitize=true">
-            which may contextualize syntrophic exchanges in their likelihood for exchange based on the fitness expense of their excretion. Our curation of the MIP score can be further contextualized with costless excreta via the intersection of exchanged compounds in the MIP score and the CIP for the same member pair. 
-        </p>
+        <h4>Life History</h4>    
+        <p> “Genome Size”<p>
+        <p> “Minimum Generation Time”<p>
+        <p> “rRNA operon copy number”<p>
     
-        <h4>Biological Interaction Potential (BIT)</h4>    
-        <p>
-            The BIT score categorizes the member interaction into one of the classical descriptions -- competitive, amensalism, neutral, parasitism, commensalism, and mutualism -- based on relative growth of the members as isolates <i>G<sub>1</sub></i> versus in the community environment <i>G<sub>1,comm</sub></i>
-                <img src="https://github.com/freiburgermsu/microbial_interactions/blob/main/ui/narrative/methods/run_microbial_interactions/BIT.png?sanitize=true">
-            which provides a tangible biological description of the member interaction based on growth through the primary metabolism.
-        </p>
-    
-        <h3>Curated scores</h3>
-    
-        <h4>MRO</h4>
-        <p>
-            The <i><b>M</b>etabolic <b>R</b>esource <b>O</b>verlap</i> (MRO) score is in the SMETANA suite and several earlier published scores, albeit with slight algorithmic variations. The MRO quantifies the fraction of a member's nutritional requirements, in a given media or the complete media by default, that overlap with the other member's nutritional requirements 
-                <img src="https://github.com/freiburgermsu/microbial_interactions/blob/main/ui/narrative/methods/run_microbial_interactions/MRO.png?sanitize=true">
-            and is importantly directional (by replacing the denominator member), which can capture directional dependencies of interactions (e.g. lawn versus spot). The minimal media <i>M</i> of each member is determined by minimizing the total exchange flux.
-        </p>
-    
-        <h4>MIP</h4>
-        <p>
-            The <i><b>M</b>etabolic <b>I</b>nteraction <b>P</b>otential</i> (MIP) score is also in the SMETANA and earlier suites. This score quantifies syntrophic exchanges between the members. Our curation computes the MIP as the difference in exchanged compounds versus transported compounds in the compartmentalized community model
-                <img src="https://github.com/freiburgermsu/microbial_interactions/blob/main/ui/narrative/methods/run_microbial_interactions/MIP.png?sanitize=true">
-            where compounds that the members are transporting but the community is not exchanging with the media must be sourced from syntrophy. The MIP compounds that are costlessly excreted can also be quantified as a subscore of the MIP, and may better represent the compounds that are favorably exchanged in the community.
-        </p>
-    
-        <h4>PC</h4>
-        <p>
-            The <i><b>P</b>otential <b>C</b>ooperation</i> (PC) score quantifies the net effect of co-growth relative to isolate growth, and in our curation is determined as the ratio of community growth to the sum of isolated member growths
-                <img src="https://github.com/freiburgermsu/microbial_interactions/blob/main/ui/narrative/methods/run_microbial_interactions/PC.png?sanitize=true">
-            and is therefore essentially a continuous quantitative representation of the discrete qualitative BIT score.
-        </p>
-    
-        <h4>BSS</h4>
-        <p>
-            The <i><b>B</b>iosynthetic <b>S</b>upport <b>S</b>core</i> (BSS) score quantifies the capacity of a member to parasitize another member by topologically evaluating the proportion of a member's nutritional requirements that are in the other member's cytoplasmic metabolites
-                <img src="https://github.com/freiburgermsu/microbial_interactions/blob/main/ui/narrative/methods/run_microbial_interactions/BSS.png?sanitize=true">
-            This score therefore quantifies the capacity or incentive for negative interaction.
-        </p>
-    
-        <!-- <h4>MSI</h4>
-        <p>
-            The <i><b>M</b>etabolic <b>S</b>upport <b>I</b>ndex</i> is the newest published score that we curated, and uniquely captures the ability of a member to activate the metabolism of another member based on a comparison of the topology of the metabolic networks of each model.
-        </p> -->
+        <h3>Simulation Type - v0.0.1</h3>
     
         <h3>Calculate Metabolic Interaction Scores Application</h3>
         <p>
