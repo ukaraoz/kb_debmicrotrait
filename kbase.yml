@@ -2,7 +2,7 @@ module-name:
     debmicrotrait
 
 module-description:
-    A KBase module to run DEBmicroTrait
+    A KBase module
 
 service-language:
     python
