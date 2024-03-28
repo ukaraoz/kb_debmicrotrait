@@ -96,13 +96,13 @@ description : |
     
         <h3>Simulation Type - v0.0.1</h3>
         <h4>Batch Mode</h4>    
-        <p> text<p>
+        <p> Simulate batch conditions for n guilds growing on m substrates (nxm simulations), assuming that nitrogen and other essential nutrients are non-limiting for the synthesis of biomass. The model can run sequentially on multiple substrate concentrations.  Initial cconditions correspond to 1000 cells per gram soil with 90% reserve and 10% structural biomass. Simulations are run for 500 hours or until substrate is exhausted. CUE and realized growth rates correspond to median values averaged over the simulated growth curves. <p>
         <h4>Mixed Mode</h4>    
-        <p> text<p>
+        <p> The mixed growth medium for n guilds is represented by evenly distributing the given substrate concentration across the different substrates (n simulations). Percent uptake from the mixed medium is calculated from the concentration differences at the start and end of the simulation. Using these data, resource niche breadth is calculated using Levins index. <p>
         <h4>Competition</h4>    
-        <p> text<p>
+        <p> In competition mode, n guilds compete for m substrates in a mixed medium. The medium consists of all substrates or unique chemical classes in the chemical abundance matrix (1 + n(unique) simulations). <p>
         <h4>KBase Media</h4>    
-        <p> text<p>
+        <p> Maximum specific growth rates and protein synthesis phenotype of isolates genomes are simulated in a KBase medium. The KBase Media concentrations override the user substrate concentrations.<p>
     
         <h3>DEBmicroTrait Application</h3>
         <p>
