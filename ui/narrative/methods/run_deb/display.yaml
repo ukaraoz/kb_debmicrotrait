@@ -69,48 +69,56 @@ description : |
     <div class="app-description">
         <h2>Background</h2>
         <p>
-            Trait-based models show that ecophysiological traits of microorganisms are a promising way to connect microbial ecology to ecosystem scale processes. By moving beyond model representations of individual taxa, trait-based modeling strives for succinct descriptions of microbial guilds, thus avoiding complexity issues of taxon-centric modelling approaches. The challenge with this approach is to identify the key properties or traits of members of microbial communities, trait linkages or trade-offs, as well as trait regulation, and to use this information to parameterize or constrain the functional potential of the modeled communities.
+            Trait-based models show that ecophysiological traits of microorganisms are a promising intermediate complexity approach to connect microbial ecology to ecosystem scale processes. By moving beyond model representations of individual taxa, trait-based modeling strives for succinct descriptions of microbial guilds, thus avoiding complexity issues of taxon-centric modelling approaches. The challenge with this approach is to identify the key properties or traits of members of microbial communities, trait linkages or trade-offs, as well as trait regulation, and to use this information to parameterize or constrain the functional potential of the modeled communities.
         </p>
     
         <h2>DEBmicroTrait</h2>
         <p>
-            Therefore, we have developed and tested computational workflows that enable seamless prediction of ecophysiological traits of bacteria and archaea from KBase genomes (microTrait) and their representation in a coherent dynamic energy budget-based trait-based modeling framework (DEBmicroTrait).  DEBmicroTrait runs trait-based simulations under different scenarios with varying levels of microbial community and environmental complexity.</a>.
+            Therefore, we have developed and tested computational workflows that enable seamless prediction of ecophysiological traits of bacteria and archaea from KBase genomes (microTrait) and their representation in a coherent dynamic energy budget-based trait-based modeling framework (DEBmicroTrait). These allow users to (1) infer ecologically relevant traits from microbial genomes, (2) systematically reduce the high-dimensionality of genome-level microbial trait-data by inferring functional guilds (sets of organisms performing the same ecological function irrespective of their phylogenetic origin), (3) quantify within-guild trait variance and capture trait linkages in trait-based models, (4) explore trait-based simulations under different scenarios with varying levels of microbial community and environmental complexity.
         </p>
     
         <h3>Trait Granularity - v0.0.1</h3>
     
         <h4>Resource Acquisition</h4>    
-        <p> “Resource Acquisition:Substrate uptake:free amino acids transport”<p>
-        <p> “Resource Acquisition:Substrate uptake:aromatic acid transport”<p>
-        <p> “Resource Acquisition:Substrate uptake:carbohydrate transport”<p>
-        <p> "Resource “Acquisition:Substrate uptake:carboxylate transport”<p>
-        <p> “Resource Acquisition:Substrate uptake:lipid transport”<p>
-        <p> “Resource Acquisition:Substrate uptake:nucleic acid component transport”<p>
+        <p> “Resource Acquisition:Substrate uptake[:free amino acids transport,:aromatic acid transport,:carbohydrate transport,:carboxylate transport,:lipid transport,:nucleic acid component transport]”<p>
         <p> “Resource Acquisition:Substrate degradation:complex carbohydrate depolymerization”<p>
     
         <h4>Resource Use</h4>    
         <p> “Resource Use:Chemotrophy:chemoorganoheterotrophy:aerobic respiration”<p>
 
         <h4>Stress Tolerance</h4>    
-        <p> “Stress Tolerance:General:scavenging of reactive oxygen species”<p>
-        <p> “Stress Tolerance:General:protection, repair, degradation of denatured/misfolded proteins”<p>
-        <p> “Stress Tolerance:General:biofilm formation”<p>
-    
+        <p> “Stress Tolerance:General[:scavenging of reactive oxygen species,:protection, repair, degradation of denatured/misfolded proteins,:biofilm formation]”<p>
+
         <h4>Life History</h4>    
         <p> “Genome Size”<p>
         <p> “Minimum Generation Time”<p>
         <p> “rRNA operon copy number”<p>
     
         <h3>Simulation Type - v0.0.1</h3>
+        <h4>Batch Mode</h4>    
+        <p> text<p>
+        <h4>Mixed Mode</h4>    
+        <p> text<p>
+        <h4>Competition</h4>    
+        <p> text<p>
+        <h4>KBase Media</h4>    
+        <p> text<p>
     
-        <h3>Calculate Metabolic Interaction Scores Application</h3>
+        <h3>DEBmicroTrait Application</h3>
         <p>
-            CommScores is wrapped in the <i>Calculate Metabolic Interaction Scores</i> KBase Application, where users provide media and member FBA models and receive an output of two tabs: the first tab displays a table with all results, including metadata information and subscores; the second tab displays a heatmap table of just the only numerical scores and may therefore be advantageous for quantitative post-processing. The output tables can be downloaded as the raw HTML via the <b>index.html</b>.
+            DEBmicroTrait is wrapped in the <i>DEBmicroTrait</i> KBase Application, where users provide media and genome sets and receive an output of ....
         </p>
         <p>Future developments include:</p>
         <ol>
-            <li>developing additional scores of other biological dimensions, such as phylogenetic similarity</li>
-            <li>improving the format of model outputs to foster user interpretation</li>
-            <li>expanding the Application UI to accept more parameters that are available in the API</li>
+            <li>text</li>
+            <li>text</li>
+            <li>text</li>
         </ol>
+         <h3>Related Publications</h3>
+        <p>
+            Karaoz, Ulas, and Eoin L. Brodie. "microTrait: a toolset for a trait-based representation of microbial genomes." Frontiers in Bioinformatics 2 (2022): 918853.
+        </p>
+         <p>
+            Marschmann, Gianna L., et al. "Predictions of rhizosphere microbiome dynamics with a genome-informed and trait-based energy budget model." Nature Microbiology (2024): 1-13.
+        </p>
     </div>
