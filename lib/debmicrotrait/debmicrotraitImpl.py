@@ -391,27 +391,44 @@ class debmicrotrait:
             'name': os.path.basename(report_fp),
         }]
 
+
+        file_links = [
+        {
+            'path': os.path.join(deb_dir, 'datatables', 'substrate_kinetic_traits.txt'),
+            'name': 'substrate_kinetic_traits.txt',
+            'label': 'substrate_kinetic_traits.txt',
+            'description': 'substrate_kinetic_traits.txt'
+        },
+        {
+            'path': os.path.join(deb_dir, 'datatables', 'batch_phenotypic_traits.txt'),
+            'name': 'batch_phenotypic_traits.txt',
+            'label': 'batch_phenotypic_traits.txt',
+            'description': 'batch_phenotypic_traits.txt'
+        },
+        {
+            'path': os.path.join(deb_dir, 'datatables', 'mixed_medium.txt'),
+            'name': 'mixed_medium.txt',
+            'label': 'mixed_medium.txt',
+            'description': 'mixed_medium.txt'
+        },
+        {
+            'path': os.path.join(deb_dir, 'datatables', 'competition.txt'),
+            'name': 'competition.txt',
+            'label': 'competition.txt',
+            'description': 'competition.txt'
+        }
+        ]
+
         report_text = 'Ran deb, results are packaged below. \n\n'
         report_params = {
-            # report_object_name: 
-            ##  (optional string) a name to give the workspace object that stores the report.
-            'report_object_name': 'kb_deb_report',  
-            # message: 
-            ##  (optional string) basic result message to show in the report
+            'report_object_name': 'kb_deb_report',
             'message': report_text,
-            #  direct_html_link_index: 
-            ##  (optional integer) index in html_links that you want to use as the main/default report view
             'direct_html_link_index': 0,
-            #  html_links: 
-            ##  (optional list of dicts) HTML files to attach and display in the report (see the additional information below)
             'html_links': html_links,        
-            # file_links: 
-            ##  (optional list of dicts) files to attach to the report (see the valid key/vals below)
+            'file_links': file_links,       
             'workspace_name': params['workspace_name'],
-            # objects_created: 
-            ##  (optional list of WorkspaceObject) data objects that were created as a result of running your app, such as assemblies or genomes
-            #'objects_created': objects_created,
         }
+
         report_output = app.kbr.create_extended_report(report_params)
 
         output = {
