@@ -15,16 +15,11 @@
             "id": "trait_refs",
             "optional": true,
             "advanced": false,
-            "allow_multiple": true,
+            "allow_multiple": false,
             "default_values": [
-                ""
+                "rhizosphere_isolate_genomes"
             ],
-            "field_type": "text",
-            "text_options": {
-                "valid_ws_types": [
-                    "KBaseSets.GenomeSet"
-                ]
-            }
+            "field_type": "text"
         },
         {
             "id": "variance_interguild",
@@ -32,7 +27,7 @@
             "advanced": true,
             "allow_multiple": false,
             "default_values": [
-                "70"
+                ""
             ],
             "field_type": "text",
             "text_options": {
