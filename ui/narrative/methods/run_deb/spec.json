@@ -17,7 +17,7 @@
             "advanced": false,
             "allow_multiple": false,
             "default_values": [
-                ""
+                "rhizosphere_isolate_genomes_v1"
             ],
             "field_type": "text",
             "text_options": {
@@ -45,7 +45,7 @@
             "id": "media_refs",
             "optional": true,
             "advanced": false,
-            "allow_multiple": true,
+            "allow_multiple": false,
             "default_values": [
                 ""
             ],
