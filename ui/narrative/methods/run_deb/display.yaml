@@ -106,13 +106,13 @@ description : |
     
         <h3>DEBmicroTrait Application</h3>
         <p>
-            DEBmicroTrait is wrapped in the <i>DEBmicroTrait</i> KBase Application, where users provide media and genome sets and receive an output of ....
+            DEBmicroTrait is wrapped in the <i>DEBmicroTrait</i> KBase Application, where users provide media and trait matrices derived from genome sets and receive an output of [...]
         </p>
         <p>Future developments include:</p>
         <ol>
-            <li>text</li>
-            <li>text</li>
-            <li>text</li>
+            <li>Expanding the DEB Application UI to accept more parameters from microTrait</li>
+            <li>Improving the format of model outputs to foster user interpretation</li>
+            <li>Mapping to chemical classification tools for representation of chemical guilds at ecosystem scale</li>
         </ol>
          <h3>Related Publications</h3>
         <p>
