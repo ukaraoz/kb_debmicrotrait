@@ -42,8 +42,8 @@ class debmicrotrait:
     # the latter method is running.
     ######################################### noqa
     VERSION = "0.0.1"
-    GIT_URL = "https://github.com/ukaraoz/kb_debmicrotrait"
-    GIT_COMMIT_HASH = "1a4bbe383bbabaa482acf09c5eff5fadcee75216"
+    GIT_URL = "https://github.com/ukaraoz/kb_debmicrotrait.git"
+    GIT_COMMIT_HASH = "e86d91dc48c4f582afab0ee6e79b1a3291cdd1af"
 
     #BEGIN_CLASS_HEADER
     #END_CLASS_HEADER
@@ -190,8 +190,9 @@ class debmicrotrait:
             pooled_fasta_pathsfile,
             microtrait_dir,
             'dataset',
-            '40',
+            '4',
             "--define_guilds",
+            "--read_from_rds",
             "--verbose"
         ])
         microtrait_cmd = ' '.join(microtrait_cmd)
