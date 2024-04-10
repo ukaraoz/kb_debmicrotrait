@@ -103,11 +103,12 @@ class debmicrotraitTest(unittest.TestCase):
         # Check returned data with
         # self.assertEqual(ret[...], ...) or other unittest methods
         #ref = "79/16/1"
-        ref = "72942/39/1" # assembly
+        #ref = "72942/39/1" # assembly
         #ref = "72942/85/1" # genome, and corresponds to 72942/39/1
-        #ref = "72942/214/1" # assembly set
         #ref = "72942/212/1"  # assembly set 39
-        #ref = "72942/216/1" # genome set
+        #ref = "72942/208/1"   # genome set 39
+        ref = "72942/214/1" # assembly set 4
+        #ref = "72942/216/1" # genome set 4
         # need self.callbackURL or SDK_CALLBACK_URL from the environment
         #assembly_util = get_assembly_util()
         #result = assembly_util.get_assembly_as_fasta({'ref': params['assembly_ref']})

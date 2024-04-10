@@ -205,24 +205,23 @@ class debmicrotrait:
         except Exception as e:
             raise(e)
 
-
         #pp.pprint(dir(obj))
         #pp.pprint(obj.ref)
         #pprint.pprint(temp)
         test_dir = "/kb/module/test/data/microtrait/rhizosphere"
-        shutil.copytree(test_dir, microtrait_dir)
+        #shutil.copytree(test_dir, microtrait_dir)
 
-        test_figures_dir = os.path.join(test_dir, 'figures')
-        test_datatables_dir = os.path.join(test_dir, 'datatables')
-        test_microtraittemp_dir = os.path.join(test_dir, 'microtrait_out')
+        ## test_figures_dir = os.path.join(test_dir, 'figures')
+        ## test_datatables_dir = os.path.join(test_dir, 'datatables')
+        ## test_microtraittemp_dir = os.path.join(test_dir, 'microtrait_out')
 
-        test_figure_files = os.listdir(test_figures_dir)
-        test_figure_files_fp = [os.path.join(test_figures_dir, fn) for fn in os.listdir(test_figures_dir)]
+        ## test_figure_files = os.listdir(test_figures_dir)
+        ## test_figure_files_fp = [os.path.join(test_figures_dir, fn) for fn in os.listdir(test_figures_dir)]
         #for fp in test_figure_files_fp:
         #    print(fp, end = '\n')
         #print("----------\n")
-        test_datatables_files = os.listdir(test_datatables_dir)
-        test_datatables_files_fp = [os.path.join(test_datatables_dir, fn) for fn in os.listdir(test_datatables_dir)]
+        ## test_datatables_files = os.listdir(test_datatables_dir)
+        ## test_datatables_files_fp = [os.path.join(test_datatables_dir, fn) for fn in os.listdir(test_datatables_dir)]
         #for fp in test_datatables_files_fp:
         #    print(fp, end = '\n')
         #print("\n\n")
