@@ -174,6 +174,37 @@ class debmicrotrait:
         pooled_fasta_pathsfile = os.path.join(pooled_fasta_dir, "pooled_fasta_pathsfile.txt")
         with open(pooled_fasta_pathsfile, mode='wt', encoding='utf-8') as pathsfile:
             pathsfile.write('\n'.join(pooled_fasta_fp_l))
+        print("pooled_fasta_pathsfile:", pooled_fasta_pathsfile, "\n")
+
+        #
+        ##
+        ### run dRep
+        ####
+        #####
+        #dRep_params_l = params.get_non_default_tool_params()
+        ### "--read_from_rds",
+        test_dir = "/kb/module/test/data/microtrait/rhizosphere"
+        shutil.copytree(os.path.join(test_dir, 'precomputed'), os.path.join(microtrait_dir, 'precomputed'))
+        microtrait_cmd = ([
+            '/usr/local/lib/R/site-library/microtrait/run_microtrait.R',
+            pooled_fasta_pathsfile,
+            microtrait_dir,
+            'dataset',
+            '4',
+            "--define_guilds",
+            "--read_from_rds",
+            "--verbose"
+        ])
+        microtrait_cmd = ' '.join(microtrait_cmd)
+        print("microtrait_cmd:", microtrait_cmd, "\n")
+
+        #print("NUMBER OF CORES: ", multiprocessing.cpu_count(), "\n\n\n")
+
+        try:
+            run_check(microtrait_cmd)
+        except Exception as e:
+            raise(e)
+
 
         #pp.pprint(dir(obj))
         #pp.pprint(obj.ref)
