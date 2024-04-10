@@ -17,6 +17,7 @@ from installed_clients.AssemblyUtilClient import AssemblyUtil
 
 from .impl.kb_obj import Assembly, Genome, AssemblySet, GenomeSet
 from .util.debug import dprint
+from .util.cli import run_check
 from .util.microtrait import get_microtrait_datatables
 from .impl.config import app, reset_globals
 from .impl.params import Params
